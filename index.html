@@ -4,8 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manohar Gourai | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* ========== BASE ========== */
@@ -18,7 +17,7 @@ body {
 
 a { text-decoration: none; }
 
-/* ========== TOP NAV (RESTORED) ========== */
+/* ========== TOP NAV ========== */
 .top-nav {
   position: sticky;
   top: 0;
@@ -85,8 +84,8 @@ a { text-decoration: none; }
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  object-fit: cover;       /* PASSPORT FIX */
-  object-position: top;    /* FACE VISIBLE */
+  object-fit: cover;
+  object-position: top;
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
 }
 
@@ -102,11 +101,6 @@ a { text-decoration: none; }
 .hero-text p {
   color: #a7adbb;
   line-height: 1.6;
-}
-
-.hero-links a {
-  color: #6fb7ff;
-  margin-right: 18px;
 }
 
 /* ========== SECTIONS ========== */
@@ -155,23 +149,32 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* ========== ICON LINKS ========== */
-.icon-links {
-  margin-top: 40px;
+/* ========== BIGGER SOCIAL ICONS (ONLY CHANGE) ========== */
+.social-links-centered {
   display: flex;
-  gap: 22px;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 35px;
 }
 
-.icon-links a {
-  width: 54px;
-  height: 54px;
+.social-links-centered a {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  color: #fff;
+  color: #9fc5ff;
+  font-size: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.social-links-centered a:hover {
+  transform: translateY(-6px) scale(1.08);
+  background: rgba(120, 170, 255, 0.15);
+  color: #ffffff;
 }
 
 /* ========== BUTTONS ========== */
@@ -207,7 +210,7 @@ footer {
 
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav class="top-nav">
   <div class="nav-inner">
     <div class="logo">Manohar Gourai</div>
@@ -222,7 +225,7 @@ footer {
 
 <div class="container">
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <div class="hero">
   <img src="manohar.jpg" alt="Manohar Gourai">
   <div class="hero-text">
@@ -232,11 +235,10 @@ footer {
       supporting institutional portfolios across global custody, loans, and structured finance,
       backed by advanced training in Business Analytics.
     </p>
-    
   </div>
 </div>
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section id="about">
   <h2>About Me</h2>
   <div class="section-line"></div>
@@ -259,39 +261,18 @@ footer {
 
   <!-- Highlights -->
   <div class="highlights">
-    <div class="highlight-box">
-      <h3>4+</h3>
-      <p>Years Industry Experience</p>
-    </div>
-    <div class="highlight-box">
-      <h3>10+</h3>
-      <p>Business Analytics Projects</p>
-    </div>
-    <div class="highlight-box">
-      <h3>220+</h3>
-      <p>Resolved Client Exceptions</p>
-    </div>
-    <div class="highlight-box">
-      <h3>3</h3>
-      <p>VIP Excellence Awards</p>
-    </div>
+    <div class="highlight-box"><h3>4+</h3><p>Years Industry Experience</p></div>
+    <div class="highlight-box"><h3>10+</h3><p>Business Analytics Projects</p></div>
+    <div class="highlight-box"><h3>220+</h3><p>Resolved Client Exceptions</p></div>
+    <div class="highlight-box"><h3>3</h3><p>VIP Excellence Awards</p></div>
   </div>
 
-  <!-- Icons -->
+  <!-- Social Icons -->
   <div class="social-links-centered">
-  <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-
-  <a href="https://github.com/manohar1008303" target="_blank">
-    <i class="fab fa-github"></i>
-  </a>
-
-  <a href="https://manohar1008303.github.io/manohargourai.github.io/" target="_blank">
-    <i class="fas fa-globe"></i>
-  </a>
-</div>
-
+    <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/manohar1008303" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://manohar1008303.github.io/manohargourai.github.io/" target="_blank"><i class="fas fa-globe"></i></a>
+  </div>
 
   <!-- Buttons -->
   <div class="cta-buttons">
@@ -301,36 +282,26 @@ footer {
   </div>
 </section>
 
-<!-- ===== RECOGNITION ===== -->
+<!-- RECOGNITION -->
 <section id="recognition">
   <h2>Professional Recognition</h2>
   <div class="section-line"></div>
-
   <div class="recognition-grid">
     <div class="card">
       <h3>VIP Award for Excellence</h3>
       <p><strong>June 2022 & November 2022</strong></p>
-      <p>
-        Recognized for strong analytical judgment and structured problem-solving in
-        resolving long-standing operational breaks and improving portfolio stability.
-      </p>
+      <p>Recognized for analytical rigor and resolving long-standing operational breaks.</p>
     </div>
-
     <div class="card">
       <h3>VIP Award for Excellence</h3>
       <p><strong>September 2023</strong></p>
-      <p>
-        Awarded for delivering critical client outcomes under tight timelines,
-        resolving long-aged breaks, and reducing outstanding pending transactions to zero.
-      </p>
+      <p>Delivered critical client outcomes and reduced outstanding transactions to zero.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== PROJECTS (UNCHANGED PLACEHOLDER) ===== -->
 <section id="projects"></section>
 
-<!-- ===== CONTACT ===== -->
 <section id="contact">
   <h2>Contact</h2>
   <div class="section-line"></div>
@@ -339,13 +310,10 @@ footer {
   </div>
 </section>
 
-<footer>
-  © 2026 Manohar Gourai
-</footer>
+<footer>© 2026 Manohar Gourai</footer>
 
 </div>
 
-<!-- ===== ACTIVE NAV SCRIPT ===== -->
 <script>
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -353,15 +321,11 @@ const navLinks = document.querySelectorAll(".nav-link");
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 140;
-    if (scrollY >= sectionTop) current = section.id;
+    if (scrollY >= section.offsetTop - 140) current = section.id;
   });
-
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
+    if (link.getAttribute("href") === "#" + current) link.classList.add("active");
   });
 });
 </script>
