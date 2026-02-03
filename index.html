@@ -8,41 +8,25 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top left, #141b2d, #0b0f14 60%);
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top left, #141b2d, #0b0f14);
       color: #e6e8eb;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 950px;
       margin: auto;
       padding: 60px 20px;
     }
 
-    /* HERO SECTION */
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-      flex-wrap: wrap;
-      margin-bottom: 80px;
-    }
-
-    .hero img {
-      width: 220px;
-      border-radius: 50%;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .hero img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 30px 70px rgba(140, 100, 255, 0.4);
-    }
-
     h1 {
-      font-size: 44px;
+      font-size: 46px;
       margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 60px;
+      margin-bottom: 20px;
     }
 
     p {
@@ -50,76 +34,112 @@
       line-height: 1.7;
     }
 
-    .hero p {
-      max-width: 520px;
-    }
-
-    .links a {
-      color: #b18cff;
+    a {
+      color: #9b7bff;
       text-decoration: none;
-      margin-right: 16px;
-      font-weight: bold;
+      margin-right: 15px;
     }
 
-    .links a:hover {
+    a:hover {
       text-decoration: underline;
     }
 
-    h2 {
-      margin-top: 70px;
-      margin-bottom: 20px;
-      font-size: 28px;
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
     }
 
+    .hero img {
+      width: 220px;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero-text {
+      max-width: 520px;
+      animation: fadeSlide 1.2s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cards */
     .card {
-      background: linear-gradient(145deg, #141b2d, #0f1523);
+      background: linear-gradient(145deg, #121826, #0e1422);
       padding: 25px;
       border-radius: 14px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      margin-top: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(120, 90, 255, 0.25);
     }
 
     footer {
       margin-top: 80px;
-      text-align: center;
-      font-size: 14px;
       color: #777;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-
   <div class="container">
 
     <!-- HERO -->
     <div class="hero">
-      <img src="manohar.jpg" alt="Manohar Gourai">
+      <img src="manohar.jpg" alt="Manohar Gourai" />
 
-      <div>
+      <div class="hero-text">
         <h1>Manohar Gourai</h1>
-
         <p>
           Client Service & Portfolio Operations professional with 4+ years of experience
           in global custody and institutional portfolio support, specializing in loans,
           structured finance, and data-driven analytics.
         </p>
 
-        <div class="links">
+        <p>
           <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
           <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
-        </div>
+        </p>
       </div>
     </div>
 
     <!-- ABOUT -->
-    <h2>About Me</h2>
-    <div class="card">
+    <h2 class="reveal">About Me</h2>
+    <div class="card reveal">
       <p>
         I am currently pursuing a Master of Science in Business Analytics at the University
         of Colorado Denver (GPA 3.85/4). I bring over four years of hands-on experience at
-        Bank of New York Mellon, supporting institutional clients across loans, bonds, and
-        equity portfolios.
+        Bank of New York Mellon, supporting institutional clients across loans, bonds,
+        and equity portfolios.
         <br><br>
         My expertise lies in portfolio operations, cash flow analysis, reconciliation,
         exception management, and translating complex financial data into clear,
@@ -128,48 +148,47 @@
     </div>
 
     <!-- SKILLS -->
-    <h2>Skills</h2>
+    <h2 class="reveal">Skills</h2>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Financial Systems & Platforms</strong><br>
-      GCM, IMMS, WSO, WRT, SOLVAS, Solvas Digitize, ATE, Nexen, PT Trade,
-      PT Research, Deal Manager, Bloomberg</p>
+      GCM, IMMS, WSO, WRT, SOLVAS, Solvas Digitize, ATE, Nexen, PT Trade, PT Research,
+      Deal Manager, Bloomberg</p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Analytics & Tools</strong><br>
       Python (basic), Power BI (basic), JMP (basic), Excel, Word, PowerPoint</p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Core Financial Knowledge</strong><br>
       Reconciliation, Trade Settlement, Cash Flow Analysis, Corporate Actions,
-      Multi-Currency Operations, Exception Management, SLA Governance</p>
+      Multi-Currency Portfolio Operations, Exception Management</p>
     </div>
 
     <!-- EXPERIENCE -->
-    <h2>Professional Experience</h2>
+    <h2 class="reveal">Professional Experience</h2>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Bank of New York Mellon — Associate, Client Processing</strong><br>
       Mar 2024 – Aug 2025</p>
       <p>
-        Owned SOD/EOD controls, monitored UICs, handled reinvestments,
-        prepared dashboards and monthly client reports, and led the team
-        during manager absence.
+        Owned daily operational controls, monitored overdue items, handled high-priority
+        client queries, prepared dashboards and reports, and led the team during manager absence.
       </p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Bank of New York Mellon — Intermediate Representative</strong><br>
       Jul 2022 – Mar 2024</p>
       <p>
-        Managed trade settlement, resolved complex cash/PAR breaks,
-        collaborated with Asset Administration teams, and reduced repeat errors.
+        Managed trade settlement, resolved cash & PAR breaks, partnered with asset teams,
+        and improved workflows to reduce processing errors.
       </p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Bank of New York Mellon — Representative</strong><br>
       Jun 2021 – Jul 2022</p>
       <p>
@@ -179,57 +198,67 @@
     </div>
 
     <!-- PROJECTS -->
-    <h2>Projects</h2>
+    <h2 class="reveal">Projects</h2>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Portfolio Optimization</strong><br>
       Built optimization models using Excel Solver to maximize returns under constraints.</p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Pay Equity Analysis</strong><br>
       Used regression analysis to identify compensation gaps and propose corrections.</p>
     </div>
 
-    <div class="card">
-      <p>
-        <strong>CLO Cashflow & Waterfall Engine (Python)</strong><br><br>
-        Built a full-scale CLO modeling engine simulating loan-level cashflows,
-        OC/IC tests, and tranche-level waterfalls from AAA to Equity.
-        <br><br>
-        Implemented defaults, recoveries, trigger-based rules, multi-sheet Excel reports,
-        and an interactive Streamlit dashboard.
-        <br><br>
-        <em>Tools:</em> Python, Pandas, Structured Finance Logic, Excel, Streamlit
+    <div class="card reveal">
+      <p><strong>CLO Cashflow & Waterfall Engine (Python)</strong><br>
+      Built a full-scale CLO modeling engine simulating loan-level cashflows,
+      OC/IC tests, and tranche waterfalls from AAA to Equity.
+      <br><br>
+      <em>Tools:</em> Python, Pandas, Structured Finance Logic, Excel, Streamlit
       </p>
     </div>
 
     <!-- EDUCATION -->
-    <h2>Education</h2>
+    <h2 class="reveal">Education</h2>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>University of Colorado Denver</strong><br>
-      MS in Business Analytics (GPA 3.85/4)<br>
-      Aug 2025 – May 2027</p>
+      MS in Business Analytics (GPA 3.85/4)</p>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <p><strong>Acharya Bangalore Business School</strong><br>
-      MBA<br>
-      Sept 2018 – Nov 2020</p>
+      MBA</p>
     </div>
 
     <!-- CONTACT -->
-    <h2>Contact</h2>
-    <div class="card">
+    <h2 class="reveal">Contact</h2>
+    <div class="card reveal">
       <p>Email: manohar.gourai@gmail.com</p>
     </div>
 
     <footer>
       © 2026 Manohar Gourai
     </footer>
-
   </div>
+
+  <!-- Scroll animation script -->
+  <script>
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 120) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
