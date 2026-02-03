@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manohar Gourai | Finance & Business Analytics</title>
 
 <style>
@@ -16,135 +16,154 @@ body {
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 60px 20px;
-}
-
-/* HERO */
-.hero {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.hero img {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.45);
-}
-
-.hero-text {
-  max-width: 620px;
+  padding: 70px 20px;
 }
 
 h1 {
   font-size: 44px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
-.hero-text p {
-  color: #a7adbb;
+h2 {
+  margin-top: 80px;
+  font-size: 34px;
+}
+
+p {
+  color: #b9c0d0;
   line-height: 1.7;
 }
 
-.links a {
-  color: #7fb7ff;
-  margin-right: 18px;
+a {
+  color: #6bb6ff;
   text-decoration: none;
-  font-weight: 500;
+  margin-right: 18px;
 }
 
-.links a:hover {
-  text-decoration: underline;
+a:hover { text-decoration: underline; }
+
+/* HERO */
+.hero {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* ABOUT */
-.section-title {
-  margin-top: 70px;
-  font-size: 28px;
+.hero img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
 }
 
-.underline {
-  width: 60px;
-  height: 4px;
-  background: #6ea8ff;
-  margin-top: 8px;
-  border-radius: 4px;
+.hero-text {
+  max-width: 600px;
 }
 
+/* CARDS */
 .card {
   background: linear-gradient(145deg, #141d30, #0e1424);
-  padding: 28px;
-  border-radius: 16px;
-  margin-top: 25px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.45);
 }
 
 /* HIGHLIGHTS */
 .highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin-top: 35px;
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .highlight-box {
-  background: rgba(255,255,255,0.04);
-  border-radius: 18px;
-  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  padding: 35px;
+  border-radius: 20px;
   text-align: center;
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-.highlight-box h2 {
-  color: #7fb7ff;
-  font-size: 40px;
+.highlight-box h3 {
+  font-size: 36px;
+  color: #6bb6ff;
   margin-bottom: 10px;
 }
 
-.highlight-box p {
-  color: #c9cdd8;
-  margin: 0;
-}
-
-/* ACTION BUTTONS */
+/* BUTTONS */
 .actions {
   display: flex;
-  gap: 20px;
-  margin-top: 40px;
+  gap: 30px;
+  margin-top: 50px;
   flex-wrap: wrap;
 }
 
-.actions a {
-  padding: 16px 32px;
-  border-radius: 40px;
-  border: 2px solid #4e78b7;
-  color: white;
-  text-decoration: none;
+.btn {
+  padding: 16px 34px;
+  border-radius: 35px;
+  border: 2px solid #355f9e;
+  background: rgba(53,95,158,0.15);
+  color: #fff;
   font-weight: 600;
 }
 
-.actions a:hover {
-  background: #4e78b7;
+/* RECOGNITION */
+.recognition {
+  margin-top: 90px;
+  text-align: center;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    text-align: center;
-    justify-content: center;
-  }
+.recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
 
-  .hero-text {
-    max-width: 100%;
-  }
+.recognition-card {
+  background: linear-gradient(145deg, #141d30, #0e1424);
+  border-radius: 22px;
+  padding: 45px 35px;
+  border-top: 4px solid;
+}
 
-  .actions {
-    justify-content: center;
-  }
+.gold { border-color: #d6b24a; }
+.blue { border-color: #4f8cff; }
+
+.badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+.badge.gold { background: rgba(214,178,74,0.15); color:#d6b24a; }
+.badge.blue { background: rgba(79,140,255,0.15); color:#7fb7ff; }
+
+.date {
+  display:inline-block;
+  margin: 14px 0;
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-size: 14px;
+}
+
+.date.gold { background: rgba(214,178,74,0.15); color:#d6b24a; }
+.date.blue { background: rgba(79,140,255,0.15); color:#7fb7ff; }
+
+footer {
+  margin-top: 120px;
+  text-align: center;
+  color: #777;
 }
 </style>
 </head>
@@ -152,77 +171,99 @@ h1 {
 <body>
 <div class="container">
 
-  <!-- HERO -->
-  <div class="hero">
-    <img src="manohar.jpg" alt="Manohar Gourai" />
+<!-- HERO -->
+<div class="hero">
+  <img src="manohar.jpg" alt="Manohar Gourai">
 
-    <div class="hero-text">
-      <h1>Manohar Gourai</h1>
-
-      <p>
-        Client Service & Portfolio Operations professional with 4+ years of experience supporting
-        institutional portfolios across global custody, loans, and structured finance,
-        backed by advanced training in Business Analytics.
-      </p>
-
-      <div class="links">
-        <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
-        <a href="https://manohargourai.github.io" target="_blank">Portfolio</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="section-title">About Me</div>
-  <div class="underline"></div>
-
-  <div class="card">
+  <div class="hero-text">
+    <h1>Manohar Gourai</h1>
     <p>
-      I am a finance and analytics professional with over four years of experience supporting
-      institutional portfolios at Bank of New York Mellon, complemented by graduate-level
-      training in Business Analytics at the University of Colorado Denver.
-      <br><br>
-      My background spans portfolio operations, cash flow analysis, reconciliation,
-      exception management, and client service within highly regulated financial environments.
-      I work closely with cross-functional teams to ensure operational accuracy,
-      manage risk, and deliver reliable, timely reporting.
+      Client Service & Portfolio Operations professional with over four years of experience
+      supporting institutional portfolios across global custody, loans, and structured finance,
+      backed by advanced training in Business Analytics.
     </p>
 
-    <p style="margin-top:20px; font-weight:600;">
-      Let’s connect and build solutions that matter.
+    <p>
+      <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
+      <a href="#" target="_blank">Portfolio</a>
     </p>
   </div>
+</div>
 
-  <!-- HIGHLIGHTS -->
-  <div class="highlights">
-    <div class="highlight-box">
-      <h2>4+</h2>
-      <p>Years Industry Experience</p>
+<!-- ABOUT -->
+<h2>About Me</h2>
+<div class="card">
+  <p>
+    I am a finance and analytics professional with over four years of experience supporting
+    institutional portfolios at Bank of New York Mellon, complemented by graduate-level
+    training in Business Analytics at the University of Colorado Denver.
+  </p>
+  <p>
+    My background spans portfolio operations, cash flow analysis, reconciliation, exception
+    management, and client service within highly regulated financial environments. I bring a
+    structured, execution-focused mindset and partner closely with cross-functional teams
+    to deliver accurate, timely, and reliable outcomes.
+  </p>
+  <p><strong>Let’s connect and build solutions that matter.</strong></p>
+</div>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+  <div class="highlight-box">
+    <h3>4+</h3>
+    Years Industry Experience
+  </div>
+  <div class="highlight-box">
+    <h3>10+</h3>
+    Business Analytics Projects
+  </div>
+  <div class="highlight-box">
+    <h3>220+</h3>
+    Transactions Resolved
+  </div>
+  <div class="highlight-box">
+    <h3>3×</h3>
+    Excellence Awards
+  </div>
+</div>
+
+<div class="actions">
+  <a class="btn" href="#journey">View Journey</a>
+  <a class="btn" href="#projects">See Projects</a>
+  <a class="btn" href="Manohar CV 2026.pdf" target="_blank">Download Resume</a>
+</div>
+
+<!-- RECOGNITION -->
+<div class="recognition" id="recognition">
+  <h2>Professional Recognition</h2>
+
+  <div class="recognition-grid">
+    <div class="recognition-card gold">
+      <div class="badge gold">A</div>
+      <h3>VIP Award for Excellence</h3>
+      <div class="date gold">June 2022 · November 2022</div>
+      <p>
+        Recognized for strong analytical judgment and structured problem-solving in resolving
+        long-standing operational breaks, improving portfolio accuracy and operational stability.
+      </p>
     </div>
 
-    <div class="highlight-box">
-      <h2>BNY</h2>
-      <p>Global Custody & Portfolio Ops</p>
-    </div>
-
-    <div class="highlight-box">
-      <h2>Multi</h2>
-      <p>Currency & Asset Classes</p>
-    </div>
-
-    <div class="highlight-box">
-      <h2>MSBA</h2>
-      <p>Advanced Analytics Training</p>
+    <div class="recognition-card blue">
+      <div class="badge blue">2×</div>
+      <h3>VIP Award for Excellence</h3>
+      <div class="date blue">September 2023</div>
+      <p>
+        Awarded for delivering high-impact client outcomes, resolving long-aged breaks, and
+        reducing outstanding pending transactions to zero for the first time for the client.
+      </p>
     </div>
   </div>
+</div>
 
-  <!-- ACTIONS -->
-  <div class="actions">
-    <a href="#journey">View Journey</a>
-    <a href="#projects">See Projects</a>
-    <a href="Manohar CV 2026.pdf" target="_blank">Download Resume</a>
-  </div>
+<footer>
+© 2026 Manohar Gourai
+</footer>
 
 </div>
 </body>
