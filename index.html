@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manohar Gourai | Finance & Business Analytics</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manohar Gourai | Finance & Analytics</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -23,7 +23,6 @@ body{
   font-family:Arial, sans-serif;
   background:radial-gradient(circle at top left,#141b2d,#0b0f14);
   color:var(--text);
-  scroll-behavior:smooth;
 }
 
 /* ---------- NAV ---------- */
@@ -37,25 +36,18 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-nav .logo{
-  font-size:22px;
-  font-weight:bold;
 }
 
 nav a{
   color:var(--text);
   text-decoration:none;
-  margin-left:18px;
+  margin-left:16px;
   padding:8px 14px;
   border-radius:20px;
   font-size:14px;
 }
 
-nav a.active,
-nav a:hover{
+nav a.active, nav a:hover{
   background:rgba(255,255,255,.08);
 }
 
@@ -66,56 +58,70 @@ nav a:hover{
   padding:60px 20px;
 }
 
-section{margin-top:90px}
-
+section{margin-top:80px}
 h1{font-size:44px}
-h2{font-size:28px;margin-bottom:20px}
-
+h2{margin-bottom:20px}
 p{color:var(--muted);line-height:1.7}
-
-.card{
-  background:linear-gradient(145deg,#141c2e,#0e1422);
-  padding:26px;
-  border-radius:16px;
-  margin-top:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
-}
 
 /* ---------- HERO ---------- */
 .hero{
   display:flex;
   gap:60px;
-  align-items:center;
+  align-items:flex-start;
   flex-wrap:wrap;
 }
 
-.hero img{
+/* Photo wrapper fixes crop */
+.photo-wrap{
   width:220px;
   height:220px;
-  object-fit:cover;
   border-radius:50%;
-  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  overflow:hidden;
+  flex-shrink:0;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+
+.photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Hero text */
+.hero-text{
+  max-width:650px;
+}
+
+.hero-links{
+  margin-top:14px;
 }
 
 .hero-links a{
   color:var(--accent);
-  font-weight:bold;
   margin-right:18px;
+  font-size:20px;
+}
+
+/* ---------- CARDS ---------- */
+.card{
+  background:linear-gradient(145deg,#141c2e,#0e1422);
+  padding:26px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 
 /* ---------- HIGHLIGHTS ---------- */
 .highlights{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:24px;
 }
 
 .highlight{
-  text-align:center;
+  background:rgba(255,255,255,.04);
   padding:30px;
   border-radius:18px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
+  text-align:center;
 }
 
 .highlight h3{
@@ -124,57 +130,12 @@ p{color:var(--muted);line-height:1.7}
   margin:0;
 }
 
-/* ---------- TIMELINE ---------- */
-.timeline{
-  border-left:2px solid rgba(255,255,255,.1);
-  padding-left:30px;
-}
-
-.timeline-item{
-  margin-bottom:40px;
-  position:relative;
-}
-
-.timeline-item::before{
-  content:'';
-  width:12px;
-  height:12px;
-  background:var(--accent);
-  border-radius:50%;
-  position:absolute;
-  left:-37px;
-  top:6px;
-}
-
-/* ---------- BUTTONS ---------- */
-.buttons{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:14px 28px;
-  border-radius:30px;
-  border:2px solid var(--accent);
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.btn:hover{
-  background:var(--accent);
-  color:black;
-}
-
-/* ---------- SCROLL ANIMATIONS ---------- */
+/* ---------- SCROLL ANIMATION ---------- */
 .reveal{
   opacity:0;
   transform:translateY(40px);
   transition:all .8s ease;
 }
-
 .reveal.active{
   opacity:1;
   transform:translateY(0);
@@ -182,17 +143,19 @@ p{color:var(--muted);line-height:1.7}
 
 /* ---------- MOBILE ---------- */
 @media(max-width:768px){
-  h1{font-size:34px}
-  nav{flex-wrap:wrap;gap:10px}
-  .hero{justify-content:center;text-align:center}
-  .hero-links{text-align:center}
+  .hero{
+    justify-content:center;
+    text-align:center;
+  }
+  .hero-text{
+    text-align:center;
+  }
 }
 
 footer{
   margin-top:100px;
   text-align:center;
   color:#777;
-  font-size:14px;
 }
 </style>
 </head>
@@ -200,13 +163,11 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">Manohar Gourai</div>
+  <strong>Manohar Gourai</strong>
   <div>
     <a href="#about">About</a>
     <a href="#highlights">Highlights</a>
-    <a href="#journey">Journey</a>
     <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -214,91 +175,77 @@ footer{
 <div class="container">
 
 <!-- HERO -->
-<section class="hero reveal">
-  <img src="manohar.jpg" alt="Manohar Gourai">
-  <div>
+<section class="hero reveal" id="about">
+  <div class="photo-wrap">
+    <img src="manohar.jpg" alt="Manohar Gourai">
+  </div>
+
+  <div class="hero-text">
     <h1>Manohar Gourai</h1>
     <p>
-      Client Service & Portfolio Operations professional with 4+ years of experience
-      supporting institutional portfolios across global custody, loans, and structured finance,
-      backed by advanced training in Business Analytics.
+      Finance and analytics professional with 4+ years of experience supporting
+      institutional portfolios across global custody, loans, and structured finance,
+      backed by graduate training in Business Analytics.
     </p>
+
+    <p>
+      I specialize in portfolio operations, cash flow analysis, reconciliation,
+      and risk-aware execution—bridging operational detail with business decision-making.
+    </p>
+
     <div class="hero-links">
-      <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Manohar1008303" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="Manohar CV 2026.pdf" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="reveal">
-<h2>About Me</h2>
-<div class="card">
-<p>
-I am a finance and analytics professional with over four years of experience supporting
-institutional portfolios at Bank of New York Mellon, complemented by graduate-level
-training in Business Analytics.
-<br><br>
-I specialize in portfolio operations, cash flow analysis, reconciliation, and risk-aware
-execution—working closely with cross-functional teams to deliver accurate, reliable outcomes.
-</p>
-</div>
-</section>
-
 <!-- HIGHLIGHTS -->
 <section id="highlights" class="reveal">
-<h2>A Few Highlights</h2>
-<div class="highlights">
-  <div class="highlight"><h3>4+</h3><p>Years Experience</p></div>
-  <div class="highlight"><h3>10+</h3><p>Analytics Projects</p></div>
-  <div class="highlight"><h3>BNY</h3><p>Institutional Ops</p></div>
-  <div class="highlight"><h3>MSBA</h3><p>Graduate Training</p></div>
-</div>
+  <h2>A Few Highlights</h2>
 
-<div class="buttons">
-  <a class="btn" href="#projects">See Projects</a>
-  <a class="btn" href="Manohar CV 2026.pdf" target="_blank">Download Resume</a>
-</div>
-</section>
-
-<!-- JOURNEY -->
-<section id="journey" class="reveal">
-<h2>Journey</h2>
-<div class="timeline">
-  <div class="timeline-item">
-    <strong>University of Colorado Denver</strong><br>
-    MS Business Analytics
+  <div class="highlights">
+    <div class="highlight">
+      <h3 class="counter" data-target="4">0</h3>
+      <p>Years Experience</p>
+    </div>
+    <div class="highlight">
+      <h3 class="counter" data-target="10">0</h3>
+      <p>Analytics Projects</p>
+    </div>
+    <div class="highlight">
+      <h3 class="counter" data-target="3">0</h3>
+      <p>BNY Roles</p>
+    </div>
+    <div class="highlight">
+      <h3 class="counter" data-target="1">0</h3>
+      <p>Graduate Degree</p>
+    </div>
   </div>
-  <div class="timeline-item">
-    <strong>Bank of New York Mellon</strong><br>
-    Client Processing → Associate
-  </div>
-</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="reveal">
-<h2>Projects</h2>
-<div class="card">
-<strong>CLO Cashflow & Waterfall Engine</strong>
-<p>Python-based CLO modeling with OC/IC tests and tranche waterfalls.</p>
-</div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications" class="reveal">
-<h2>Certifications</h2>
-<div class="card">
-<p>Business Analytics • Finance Operations • Data Analytics Foundations</p>
-</div>
+  <h2>Projects</h2>
+  <div class="card">
+    <strong>CLO Cashflow & Waterfall Engine</strong>
+    <p>Python-based CLO modeling with OC/IC tests, tranche waterfalls, and Excel reporting.</p>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="reveal">
-<h2>Contact</h2>
-<div class="card">
-<p>Email: manohar.gourai@gmail.com</p>
-</div>
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: manohar.gourai@gmail.com</p>
+  </div>
 </section>
 
 <footer>© 2026 Manohar Gourai</footer>
@@ -306,27 +253,31 @@ execution—working closely with cross-functional teams to deliver accurate, rel
 </div>
 
 <script>
+/* Reveal on scroll */
 const reveals=document.querySelectorAll('.reveal');
 window.addEventListener('scroll',()=>{
   reveals.forEach(el=>{
-    const top=el.getBoundingClientRect().top;
-    if(top<window.innerHeight-100) el.classList.add('active');
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add('active');
+    }
   });
 });
 
-const sections=document.querySelectorAll('section');
-const navLinks=document.querySelectorAll('nav a');
-
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(sec=>{
-    const top=sec.offsetTop-150;
-    if(scrollY>=top) current=sec.getAttribute('id');
-  });
-  navLinks.forEach(a=>{
-    a.classList.remove('active');
-    if(a.getAttribute('href')==='#'+current) a.classList.add('active');
-  });
+/* Animated counters */
+const counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+  const update=()=>{
+    const target=+counter.dataset.target;
+    const current=+counter.innerText;
+    const inc=Math.ceil(target/40);
+    if(current<target){
+      counter.innerText=current+inc;
+      setTimeout(update,40);
+    }else{
+      counter.innerText=target+"+";
+    }
+  };
+  update();
 });
 </script>
 
