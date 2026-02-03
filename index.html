@@ -8,85 +8,93 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top left, #141b2d, #0b0f14 60%);
       color: #e6e8eb;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-top: 0;
-    }
-
-    h2 {
-      margin-top: 60px;
-    }
-
-    p {
-      color: #a7adbb;
-      line-height: 1.6;
-    }
-
-    .card {
-      background: #121826;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    footer {
-      margin-top: 60px;
-      color: #777;
-      font-size: 14px;
-      text-align: center;
+      padding: 60px 20px;
     }
 
     /* HERO SECTION */
     .hero {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 50px;
       flex-wrap: wrap;
       margin-bottom: 80px;
     }
 
     .hero img {
       width: 220px;
-      height: 220px;
-      object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 30px 70px rgba(140, 100, 255, 0.4);
+    }
+
+    h1 {
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #a7adbb;
+      line-height: 1.7;
     }
 
     .hero p {
       max-width: 520px;
     }
 
-    .hero a {
-      color: #a855f7;
+    .links a {
+      color: #b18cff;
       text-decoration: none;
-      font-weight: 500;
       margin-right: 16px;
+      font-weight: bold;
     }
 
-    .hero a:hover {
+    .links a:hover {
       text-decoration: underline;
+    }
+
+    h2 {
+      margin-top: 70px;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #141b2d, #0f1523);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
 
     <!-- HERO -->
     <div class="hero">
-      <img src="manohar.jpg" alt="Manohar Gourai" />
+      <img src="manohar.jpg" alt="Manohar Gourai">
 
       <div>
         <h1>Manohar Gourai</h1>
@@ -97,10 +105,10 @@
           structured finance, and data-driven analytics.
         </p>
 
-        <p>
+        <div class="links">
           <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
           <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
-        </p>
+        </div>
       </div>
     </div>
 
@@ -108,12 +116,14 @@
     <h2>About Me</h2>
     <div class="card">
       <p>
-        I am currently pursuing a Master of Science in Business Analytics at the University of Colorado Denver (GPA 3.85/4).
-        I bring over four years of hands-on experience at Bank of New York Mellon, where I supported institutional clients
-        across loans, bonds, and equity portfolios.
+        I am currently pursuing a Master of Science in Business Analytics at the University
+        of Colorado Denver (GPA 3.85/4). I bring over four years of hands-on experience at
+        Bank of New York Mellon, supporting institutional clients across loans, bonds, and
+        equity portfolios.
         <br><br>
-        My expertise lies in portfolio operations, cash flow analysis, reconciliation, exception management,
-        and translating complex financial data into clear, client-ready insights.
+        My expertise lies in portfolio operations, cash flow analysis, reconciliation,
+        exception management, and translating complex financial data into clear,
+        client-ready insights.
       </p>
     </div>
 
@@ -121,55 +131,50 @@
     <h2>Skills</h2>
 
     <div class="card">
-      <p><strong>Financial Systems & Platforms:</strong><br>
-      GCM, IMMS, WSO, WRT, SOLVAS, Solvas Digitize, ATE, Nexen, PT Trade, PT Research, Deal Manager, Bloomberg</p>
+      <p><strong>Financial Systems & Platforms</strong><br>
+      GCM, IMMS, WSO, WRT, SOLVAS, Solvas Digitize, ATE, Nexen, PT Trade,
+      PT Research, Deal Manager, Bloomberg</p>
     </div>
 
     <div class="card">
-      <p><strong>Analytics & Tools:</strong><br>
+      <p><strong>Analytics & Tools</strong><br>
       Python (basic), Power BI (basic), JMP (basic), Excel, Word, PowerPoint</p>
     </div>
 
     <div class="card">
-      <p><strong>Core Financial Knowledge:</strong><br>
+      <p><strong>Core Financial Knowledge</strong><br>
       Reconciliation, Trade Settlement, Cash Flow Analysis, Corporate Actions,
-      Multi-Currency Portfolio Operations, Exception Management, SLA Governance</p>
-    </div>
-
-    <div class="card">
-      <p><strong>Professional Skills:</strong><br>
-      Client Communication, Risk Awareness, Analytical Thinking,
-      Process Improvement, Team Training, Leadership Support</p>
+      Multi-Currency Operations, Exception Management, SLA Governance</p>
     </div>
 
     <!-- EXPERIENCE -->
     <h2>Professional Experience</h2>
 
     <div class="card">
-      <p><strong>Bank of New York Mellon – Associate, Client Processing</strong><br>
+      <p><strong>Bank of New York Mellon — Associate, Client Processing</strong><br>
       Mar 2024 – Aug 2025</p>
       <p>
-        Owned daily operational controls (SOD/EOD), monitored UICs and overdue items,
-        ensured timely reinvestments, and handled high-priority client queries.
-        Designed management dashboards and prepared monthly client reports.
+        Owned SOD/EOD controls, monitored UICs, handled reinvestments,
+        prepared dashboards and monthly client reports, and led the team
+        during manager absence.
       </p>
     </div>
 
     <div class="card">
-      <p><strong>Bank of New York Mellon – Intermediate Representative, Client Processing</strong><br>
+      <p><strong>Bank of New York Mellon — Intermediate Representative</strong><br>
       Jul 2022 – Mar 2024</p>
       <p>
-        Handled end-to-end trade settlement, investigated complex cash and PAR breaks,
-        partnered with Asset Administration teams, and reduced repeat processing errors.
+        Managed trade settlement, resolved complex cash/PAR breaks,
+        collaborated with Asset Administration teams, and reduced repeat errors.
       </p>
     </div>
 
     <div class="card">
-      <p><strong>Bank of New York Mellon – Representative, Client Processing</strong><br>
+      <p><strong>Bank of New York Mellon — Representative</strong><br>
       Jun 2021 – Jul 2022</p>
       <p>
-        Prepared daily cash flow statements under strict SLAs,
-        resolved cash breaks with agent banks, and maintained audit-ready documentation.
+        Prepared daily cash flow statements, resolved breaks with agent banks,
+        and maintained audit-ready documentation.
       </p>
     </div>
 
@@ -188,11 +193,14 @@
 
     <div class="card">
       <p>
-        <strong>CLO Cashflow & Waterfall Engine (Python)</strong><br>
-        Built a full-scale CLO modeling engine simulating loan cashflows,
-        OC/IC coverage tests, and tranche-level waterfalls from AAA to Equity.
+        <strong>CLO Cashflow & Waterfall Engine (Python)</strong><br><br>
+        Built a full-scale CLO modeling engine simulating loan-level cashflows,
+        OC/IC tests, and tranche-level waterfalls from AAA to Equity.
         <br><br>
-        <em>Tools:</em> Python, Pandas, Structured Finance Logic, Excel Reporting, Streamlit
+        Implemented defaults, recoveries, trigger-based rules, multi-sheet Excel reports,
+        and an interactive Streamlit dashboard.
+        <br><br>
+        <em>Tools:</em> Python, Pandas, Structured Finance Logic, Excel, Streamlit
       </p>
     </div>
 
@@ -201,7 +209,7 @@
 
     <div class="card">
       <p><strong>University of Colorado Denver</strong><br>
-      MS in Business Analytics (GPA: 3.85/4)<br>
+      MS in Business Analytics (GPA 3.85/4)<br>
       Aug 2025 – May 2027</p>
     </div>
 
@@ -222,5 +230,6 @@
     </footer>
 
   </div>
+
 </body>
 </html>
