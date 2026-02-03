@@ -178,14 +178,15 @@ a { text-decoration: none; }
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 60px 20px;
+  padding: 32px 20px; /* reduced top spacing */
 }
+
 
 /* ========== HERO ========== */
 .hero {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 28px; /* reduced from 40px */
   flex-wrap: wrap;
 }
 
@@ -204,8 +205,10 @@ a { text-decoration: none; }
 
 .hero-text h1 {
   font-size: 44px;
-  margin-bottom: 10px;
+  margin-top: 0;     /* IMPORTANT */
+  margin-bottom: 8px;
 }
+
 
 .hero-text p {
   color: #a7adbb;
