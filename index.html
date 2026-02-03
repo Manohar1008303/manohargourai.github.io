@@ -5,342 +5,225 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manohar Gourai | Finance & Business Analytics</title>
 
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
 <style>
-:root {
-  --bg: radial-gradient(circle at top left, #141b2d, #0b0f14);
-  --card: rgba(255,255,255,0.05);
-  --accent: #6ea8ff;
-  --text: #e6e8eb;
-  --muted: #a7adbb;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, #141b2d, #0b0f14);
+  color: #e6e8eb;
 }
 
-/* ---------------- NAV ---------------- */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  backdrop-filter: blur(12px);
-  background: rgba(10,14,22,0.8);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-}
-.logo {
-  font-size: 22px;
-  font-weight: 600;
-}
-.nav-links a {
-  margin-left: 18px;
-  text-decoration: none;
-  color: var(--muted);
-  padding: 8px 14px;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-.nav-links a.active,
-.nav-links a:hover {
-  background: rgba(110,168,255,0.15);
-  color: #fff;
-}
-
-/* ---------------- SECTIONS ---------------- */
-section {
+.container {
   max-width: 1100px;
   margin: auto;
-  padding: 110px 24px 80px;
+  padding: 60px 20px;
 }
-h1 { font-size: 44px; margin-bottom: 12px; }
-h2 { font-size: 32px; margin-bottom: 24px; }
-p { color: var(--muted); line-height: 1.7; }
 
-/* ---------------- HERO ---------------- */
+/* HERO */
 .hero {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 50px;
   flex-wrap: wrap;
 }
-.hero-img {
-  width: 260px;
-  height: 260px;
+
+.hero img {
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
-.hero-img img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: top;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
-.hero-links a {
+
+.hero-text {
+  max-width: 620px;
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  color: #a7adbb;
+  line-height: 1.7;
+}
+
+.links a {
+  color: #7fb7ff;
   margin-right: 18px;
-  color: var(--accent);
   text-decoration: none;
+  font-weight: 500;
 }
 
-/* ---------------- CARDS ---------------- */
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* ABOUT */
+.section-title {
+  margin-top: 70px;
+  font-size: 28px;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background: #6ea8ff;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+
 .card {
-  background: var(--card);
-  border-radius: 16px;
+  background: linear-gradient(145deg, #141d30, #0e1424);
   padding: 28px;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  border-radius: 16px;
+  margin-top: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 }
 
-/* ---------------- HIGHLIGHTS ---------------- */
+/* HIGHLIGHTS */
 .highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
 }
-.highlight-num {
-  font-size: 42px;
-  color: var(--accent);
+
+.highlight-box {
+  background: rgba(255,255,255,0.04);
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.highlight-box h2 {
+  color: #7fb7ff;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.highlight-box p {
+  color: #c9cdd8;
+  margin: 0;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.actions a {
+  padding: 16px 32px;
+  border-radius: 40px;
+  border: 2px solid #4e78b7;
+  color: white;
+  text-decoration: none;
   font-weight: 600;
 }
 
-/* ---------------- ICON LINKS ---------------- */
-.icon-links {
-  display: flex;
-  gap: 20px;
-  margin: 30px 0;
-}
-.icon-links a {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  transition: 0.3s;
-}
-.icon-links a:hover {
-  background: var(--accent);
+.actions a:hover {
+  background: #4e78b7;
 }
 
-/* ---------------- BUTTONS ---------------- */
-.actions {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.btn {
-  padding: 14px 28px;
-  border-radius: 30px;
-  border: 2px solid rgba(110,168,255,0.4);
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: rgba(110,168,255,0.2);
-}
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    justify-content: center;
+  }
 
-/* ---------------- TIMELINE ---------------- */
-.timeline {
-  border-left: 2px solid rgba(255,255,255,0.15);
-  padding-left: 24px;
-}
-.timeline-item {
-  margin-bottom: 28px;
-}
+  .hero-text {
+    max-width: 100%;
+  }
 
-/* ---------------- ANIMATIONS ---------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---------------- MOBILE ---------------- */
-@media(max-width: 768px) {
-  h1 { font-size: 34px; }
-  .hero { gap: 30px; }
-  section { padding-top: 90px; }
+  .actions {
+    justify-content: center;
+  }
 }
 </style>
 </head>
 
 <body>
+<div class="container">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="logo">Manohar Gourai</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#highlights">Highlights</a>
-      <a href="#recognition">Recognition</a>
-      <a href="#journey">Journey</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO / ABOUT -->
-<section id="about" class="reveal">
+  <!-- HERO -->
   <div class="hero">
-    <div class="hero-img">
-      <img src="manohar.jpg" alt="Manohar Gourai">
-    </div>
-    <div>
+    <img src="manohar.jpg" alt="Manohar Gourai" />
+
+    <div class="hero-text">
       <h1>Manohar Gourai</h1>
+
       <p>
-        Client Service & Portfolio Operations professional with over four years of experience
-        supporting institutional portfolios across global custody, loans, and structured finance,
-        backed by graduate-level training in Business Analytics.
+        Client Service & Portfolio Operations professional with 4+ years of experience supporting
+        institutional portfolios across global custody, loans, and structured finance,
+        backed by advanced training in Business Analytics.
       </p>
-      <p>
-        I bring a structured, risk-aware approach to operations, combining financial expertise with
-        analytics to improve accuracy, reliability, and client outcomes in highly regulated environments.
-      </p>
-      <p><strong>Let’s connect and build solutions that matter.</strong></p>
+
+      <div class="links">
+        <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
+        <a href="https://manohargourai.github.io" target="_blank">Portfolio</a>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- HIGHLIGHTS -->
-<section id="highlights" class="reveal">
-  <h2>A Few Highlights</h2>
+  <!-- ABOUT -->
+  <div class="section-title">About Me</div>
+  <div class="underline"></div>
+
+  <div class="card">
+    <p>
+      I am a finance and analytics professional with over four years of experience supporting
+      institutional portfolios at Bank of New York Mellon, complemented by graduate-level
+      training in Business Analytics at the University of Colorado Denver.
+      <br><br>
+      My background spans portfolio operations, cash flow analysis, reconciliation,
+      exception management, and client service within highly regulated financial environments.
+      I work closely with cross-functional teams to ensure operational accuracy,
+      manage risk, and deliver reliable, timely reporting.
+    </p>
+
+    <p style="margin-top:20px; font-weight:600;">
+      Let’s connect and build solutions that matter.
+    </p>
+  </div>
+
+  <!-- HIGHLIGHTS -->
   <div class="highlights">
-    <div class="card"><div class="highlight-num" data-count="3.5">0</div>Years Industry Experience</div>
-    <div class="card"><div class="highlight-num" data-count="12">0</div>Salesforce Certifications</div>
-    <div class="card"><div class="highlight-num" data-count="10">0</div>Business Analytics Projects</div>
-    <div class="card"><div class="highlight-num" data-count="220">0</div>Badges & Recognitions</div>
+    <div class="highlight-box">
+      <h2>4+</h2>
+      <p>Years Industry Experience</p>
+    </div>
+
+    <div class="highlight-box">
+      <h2>BNY</h2>
+      <p>Global Custody & Portfolio Ops</p>
+    </div>
+
+    <div class="highlight-box">
+      <h2>Multi</h2>
+      <p>Currency & Asset Classes</p>
+    </div>
+
+    <div class="highlight-box">
+      <h2>MSBA</h2>
+      <p>Advanced Analytics Training</p>
+    </div>
   </div>
 
-  <div class="icon-links">
-    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-  </div>
-
+  <!-- ACTIONS -->
   <div class="actions">
-    <a class="btn" href="#journey">View Journey</a>
-    <a class="btn" href="#projects">See Projects</a>
-    <a class="btn" href="Manohar CV 2026.pdf" download>Download Resume</a>
+    <a href="#journey">View Journey</a>
+    <a href="#projects">See Projects</a>
+    <a href="Manohar CV 2026.pdf" target="_blank">Download Resume</a>
   </div>
-</section>
 
-<!-- RECOGNITION -->
-<section id="recognition" class="reveal">
-  <h2>Professional Recognition</h2>
-  <div class="highlights">
-    <div class="card">
-      <strong>VIP Award for Excellence</strong><br>
-      June & November 2022<br><br>
-      Recognized for strong analytical judgment and structured problem-solving in resolving long-standing
-      operational breaks and improving portfolio stability.
-    </div>
-    <div class="card">
-      <strong>VIP Award for Excellence</strong><br>
-      September 2023<br><br>
-      Awarded for accelerating client deliverables, resolving long-aged breaks, and reducing outstanding
-      pending transactions to zero for the first time for the client.
-    </div>
-  </div>
-</section>
-
-<!-- JOURNEY -->
-<section id="journey" class="reveal">
-  <h2>Journey</h2>
-  <div class="timeline">
-    <div class="timeline-item">BNY Mellon — Client Processing Roles</div>
-    <div class="timeline-item">MS Business Analytics — University of Colorado Denver</div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="reveal">
-  <h2>Projects</h2>
-  <div class="card">CLO Cashflow & Waterfall Engine · Portfolio Optimization · Pay Equity Analysis</div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications" class="reveal">
-  <h2>Certifications</h2>
-  <div class="card">Salesforce · Analytics · Finance Certifications</div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="reveal">
-  <h2>Skills</h2>
-  <div class="card">Portfolio Operations · Reconciliation · Analytics · Risk Awareness</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="reveal">
-  <h2>Contact</h2>
-  <div class="card">manohar.gourai@gmail.com</div>
-</section>
-
-<script>
-// reveal animation
-const reveals = document.querySelectorAll('.reveal');
-window.addEventListener('scroll', () => {
-  reveals.forEach(r => {
-    if (r.getBoundingClientRect().top < window.innerHeight - 100) {
-      r.classList.add('active');
-    }
-  });
-});
-
-// active menu
-const sections = document.querySelectorAll('section');
-const links = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    if (pageYOffset >= sec.offsetTop - 120) current = sec.id;
-  });
-  links.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
-
-// counters
-document.querySelectorAll('[data-count]').forEach(el => {
-  let target = parseFloat(el.dataset.count);
-  let count = 0;
-  let inc = target / 80;
-  let timer = setInterval(() => {
-    count += inc;
-    if (count >= target) {
-      el.textContent = target + (target % 1 ? '+' : '+');
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(count);
-    }
-  }, 20);
-});
-</script>
-
+</div>
 </body>
 </html>
