@@ -1,204 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manohar Gourai | Finance & Business Analytics</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manohar Gourai | Portfolio</title>
 
-  <style>
-    /* ---------- BASE ---------- */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top left, #141b2d, #0b0f14);
-      color: #e6e8eb;
-    }
+<style>
+/* ---------- BASE ---------- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #141b2d, #0b0f14 60%);
+  color: #e6e8eb;
+}
 
-    .container {
-      max-width: 950px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+a {
+  color: #9b7bff;
+  text-decoration: none;
+}
 
-    h1 {
-      font-size: 46px;
-      margin-bottom: 10px;
-    }
+a:hover {
+  text-decoration: underline;
+}
 
-    h2 {
-      margin-top: 60px;
-      margin-bottom: 20px;
-    }
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 15px;
+  margin: 20px auto;
+  max-width: 1100px;
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 40px;
+  background: rgba(18, 24, 38, 0.6);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  z-index: 100;
+}
 
-    p {
-      color: #a7adbb;
-      line-height: 1.7;
-    }
+.navbar h3 {
+  font-weight: 500;
+  margin: 0;
+}
 
-    a {
-      color: #9b7bff;
-      text-decoration: none;
-      margin-right: 15px;
-    }
+.navbar nav a {
+  margin-left: 22px;
+  font-size: 14px;
+  color: #cbd1e1;
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+/* ---------- HERO ---------- */
+.hero {
+  max-width: 1100px;
+  margin: 80px auto 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    /* ---------- HERO ---------- */
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-bottom: 80px;
-    }
+.profile-wrap {
+  text-align: center;
+}
 
-    .profile-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-    }
+.profile-pic {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  background: white;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+}
 
-    .hero-text {
-      max-width: 520px;
-      animation: fadeSlide 1.2s ease forwards;
-    }
+.role-badge {
+  margin-top: 18px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  background: rgba(155,123,255,0.12);
+  color: #d9ccff;
+  display: inline-block;
+}
 
-    @keyframes fadeSlide {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* ---------- HERO TEXT ---------- */
+.hero-text {
+  max-width: 620px;
+  animation: fadeUp 1.2s ease forwards;
+}
 
-    /* ---------- CARDS ---------- */
-    .card {
-      background: linear-gradient(145deg, #121826, #0e1422);
-      padding: 25px;
-      border-radius: 14px;
-      margin-top: 25px;
-      transition: all 0.3s ease;
-    }
+.hero-text h1 {
+  font-size: 54px;
+  margin-bottom: 20px;
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(120, 90, 255, 0.25);
-    }
+.hero-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #b4bbcc;
+  margin-bottom: 18px;
+}
 
-    /* ---------- SCROLL ANIMATION ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
+/* ---------- HIGHLIGHTS ---------- */
+.highlights {
+  margin: 90px auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.highlights h2 {
+  margin-bottom: 30px;
+}
 
-    footer {
-      margin-top: 80px;
-      color: #777;
-      font-size: 14px;
-      text-align: center;
-    }
-  </style>
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.highlight-card {
+  padding: 30px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #121826, #0e1422);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-6px);
+}
+
+.highlight-card h3 {
+  font-size: 36px;
+  color: #9b7bff;
+  margin: 0;
+}
+
+.highlight-card p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    justify-content: center;
+  }
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <!-- HERO -->
-    <div class="hero">
-      <img src="manohar.jpg" alt="Manohar Gourai" class="profile-pic" />
+<!-- NAVBAR -->
+<div class="navbar">
+  <h3>Manohar Gourai</h3>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Experience</a>
+    <a href="#">Projects</a>
+    <a href="#">Skills</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
 
-      <div class="hero-text">
-        <h1>Manohar Gourai</h1>
-        <p>
-          Client Service & Portfolio Operations professional with 4+ years of experience
-          in global custody and institutional portfolio support, specializing in loans,
-          structured finance, and data-driven analytics.
-        </p>
-        <p>
-          <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
-        </p>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="profile-wrap">
+    <img src="manohar.jpg" alt="Manohar Gourai" class="profile-pic">
+    <div class="role-badge">
+      Client Service & Portfolio Operations
     </div>
-
-    <!-- ABOUT -->
-    <h2 class="reveal">About Me</h2>
-    <div class="card reveal">
-      <p>
-        I am currently pursuing a Master of Science in Business Analytics at the University of
-        Colorado Denver (GPA 3.85/4). I bring over four years of hands-on experience at
-        Bank of New York Mellon supporting institutional clients across loans, bonds,
-        and equity portfolios.
-        <br><br>
-        My expertise lies in portfolio operations, cash flow analysis, reconciliation,
-        exception management, and translating complex financial data into
-        clear, client-ready insights.
-      </p>
-    </div>
-
-    <!-- SKILLS -->
-    <h2 class="reveal">Skills</h2>
-    <div class="card reveal">
-      <p><strong>Financial Systems & Platforms</strong><br>
-      GCM, IMMS, WSO, WRT, SOLVAS, Solvas Digitize, ATE, Nexen, PT Trade, PT Research, Bloomberg</p>
-    </div>
-
-    <div class="card reveal">
-      <p><strong>Analytics & Tools</strong><br>
-      Python (basic), Power BI (basic), JMP (basic), Excel, Word, PowerPoint</p>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <h2 class="reveal">Professional Experience</h2>
-    <div class="card reveal">
-      <p><strong>Bank of New York Mellon — Associate, Client Processing</strong><br>
-      Mar 2024 – Aug 2025</p>
-    </div>
-
-    <!-- PROJECTS -->
-    <h2 class="reveal">Projects</h2>
-    <div class="card reveal">
-      <p><strong>CLO Cashflow & Waterfall Engine (Python)</strong><br>
-      Full-scale CLO modeling engine with OC/IC tests and tranche waterfalls.</p>
-    </div>
-
-    <!-- CONTACT -->
-    <h2 class="reveal">Contact</h2>
-    <div class="card reveal">
-      <p>Email: manohar.gourai@gmail.com</p>
-    </div>
-
-    <footer>
-      © 2026 Manohar Gourai
-    </footer>
   </div>
 
-  <script>
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 120) {
-          el.classList.add('active');
-        }
-      });
-    }
+  <div class="hero-text">
+    <h1>Manohar Gourai</h1>
+    <p>
+      Hi, I’m Manohar Gourai — a Client Service & Portfolio Operations professional
+      with 4+ years of experience in global custody and institutional portfolio support,
+      specializing in loans, structured finance, and data-driven analytics.
+    </p>
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-  </script>
+    <p>
+      I work across portfolio operations, cash flows, reconciliations, and structured
+      finance workflows—supporting institutional clients with accuracy, governance,
+      and data-backed insights.
+    </p>
+
+    <p>
+      <a href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">LinkedIn</a> ·
+      <a href="https://github.com/Manohar1008303" target="_blank">GitHub</a>
+    </p>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights">
+  <h2>A Few Highlights</h2>
+
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <h3>4+</h3>
+      <p>Years Industry Experience</p>
+    </div>
+
+    <div class="highlight-card">
+      <h3>3+</h3>
+      <p>Institutional Portfolios Supported</p>
+    </div>
+
+    <div class="highlight-card">
+      <h3>10+</h3>
+      <p>Analytics & Finance Projects</p>
+    </div>
+
+    <div class="highlight-card">
+      <h3>BNY</h3>
+      <p>Bank of New York Mellon Experience</p>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
