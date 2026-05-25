@@ -11,6 +11,12 @@
 
 <style>
 /* ========== BASE ========== */
+:root {
+  --accent: #5a8cff;
+  --accent-light: #7fb0ff;
+  --accent-warm: #5fd0c4; /* subtle teal second accent */
+}
+
 body {
   margin: 0;
   font-family: 'Spline Sans', 'Segoe UI', sans-serif;
@@ -21,6 +27,31 @@ body {
 h1, h2, h3 {
   font-family: 'Fraunces', Georgia, serif;
   letter-spacing: 0.2px;
+}
+
+/* ===== HERO LOAD STAGGER ===== */
+.hero-anim {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroIn 0.8s ease forwards;
+}
+.hero-anim.d1 { animation-delay: 0.05s; }
+.hero-anim.d2 { animation-delay: 0.20s; }
+.hero-anim.d3 { animation-delay: 0.35s; }
+.hero-anim.d4 { animation-delay: 0.50s; }
+.hero-anim.d5 { animation-delay: 0.65s; }
+
+@keyframes heroIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.no-js .hero-anim {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim { animation: none; opacity: 1; transform: none; }
 }
 
 /* ===== SCROLL REVEAL ===== */
@@ -301,6 +332,10 @@ h2 {
   background: #5a8cff;
   border-radius: 2px;
   margin-bottom: 30px;
+}
+
+.section-line.teal {
+  background: linear-gradient(90deg, #5a8cff, var(--accent-warm));
 }
 
 /* ========== CARD ========== */
@@ -663,24 +698,24 @@ footer {
 
   <!-- HERO -->
   <div class="hero">
-    <img src="manohar.jpg" alt="Manohar Gourai">
+    <img class="hero-anim d1" src="manohar.jpg" alt="Manohar Gourai">
 
     <div class="hero-text">
-      <h1>Manohar Gourai</h1>
+      <h1 class="hero-anim d2">Manohar Gourai</h1>
 
-      <p style="margin-top:18px; line-height:1.7; color:#cfd6e6;">
+      <p class="hero-anim d3" style="margin-top:18px; line-height:1.7; color:#cfd6e6;">
         I am a finance and analytics professional with over four years of experience supporting
         institutional portfolios at Bank of New York Mellon, complemented by graduate-level
         training in Business Analytics at the University of Colorado Denver.
       </p>
 
-      <p style="line-height:1.7; color:#cfd6e6;">
+      <p class="hero-anim d4" style="line-height:1.7; color:#cfd6e6;">
         My experience spans portfolio operations, cash flow analysis, reconciliation, exception
         management, and client service within highly regulated environments. I bring a structured
         mindset and strong execution focus to drive reliable, data-informed outcomes.
       </p>
 
-      <p style="margin-top:14px; font-weight:600;">
+      <p class="hero-anim d5" style="margin-top:14px; font-weight:600;">
         Let’s connect and build solutions that matter.
       </p>
     </div>
@@ -692,10 +727,10 @@ footer {
 
 
   <div class="highlights">
-    <div class="highlight-box"><h3>4+</h3><p>Years Industry Experience</p></div>
-    <div class="highlight-box"><h3>10+</h3><p>Business Analytics Projects</p></div>
-    <div class="highlight-box"><h3>5000+</h3><p>Cash Breaks Resolved</p></div>
-    <div class="highlight-box"><h3>3</h3><p>VIP Excellence Awards</p></div>
+    <div class="highlight-box"><h3 class="stat" data-target="4" data-suffix="+">4+</h3><p>Years Industry Experience</p></div>
+    <div class="highlight-box"><h3 class="stat" data-target="10" data-suffix="+">10+</h3><p>Business Analytics Projects</p></div>
+    <div class="highlight-box"><h3 class="stat" data-target="5000" data-suffix="+">5,000+</h3><p>Cash Breaks Resolved</p></div>
+    <div class="highlight-box"><h3 class="stat" data-target="3" data-suffix="">3</h3><p>VIP Excellence Awards</p></div>
   </div>
 
   <!-- SOCIAL ICONS -->
@@ -871,7 +906,7 @@ footer {
 <!-- ===== PROJECTS ===== -->
 <section id="projects">
   <h2 style="text-align:center;">Projects</h2>
-  <div class="section-line" style="margin: 0 auto 30px;"></div>
+  <div class="section-line teal" style="margin: 0 auto 30px;"></div>
 
   <p style="
     max-width: 760px;
@@ -1022,7 +1057,7 @@ footer {
 <!-- ===== SKILLS ===== -->
 <section id="skills">
   <h2 style="text-align:center;">Skills &amp; Tools</h2>
-  <div class="section-line" style="margin: 0 auto 30px;"></div>
+  <div class="section-line teal" style="margin: 0 auto 30px;"></div>
 
   <p style="
     max-width: 760px;
@@ -1241,6 +1276,46 @@ window.addEventListener("load", () => {
     });
   }, 800);
 });
+
+/* ===== COUNT-UP STATS ===== */
+function animateCount(el) {
+  const target = parseInt(el.getAttribute("data-target"), 10);
+  const suffix = el.getAttribute("data-suffix") || "";
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    // easeOutCubic for a natural deceleration
+    const eased = 1 - Math.pow(1 - p, 3);
+    const value = Math.round(eased * target);
+    el.textContent = value.toLocaleString() + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString() + suffix;
+  }
+  requestAnimationFrame(tick);
+}
+
+const statEls = document.querySelectorAll(".stat");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (reduceMotion) {
+  // Show final values immediately
+  statEls.forEach(el => {
+    const t = parseInt(el.getAttribute("data-target"), 10);
+    el.textContent = t.toLocaleString() + (el.getAttribute("data-suffix") || "");
+  });
+} else {
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.textContent = "0";
+        animateCount(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  statEls.forEach(el => statObserver.observe(el));
+}
 </script>
 
 </body>
