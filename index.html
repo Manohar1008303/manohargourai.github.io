@@ -301,6 +301,12 @@ h2 {
   border-radius: 30px;
   border: 2px solid #355a9a;
   color: #fff;
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  background: rgba(90,140,255,0.18);
+  transform: translateY(-3px);
 }
 
 /* ========== RECOGNITION ========== */
@@ -308,6 +314,142 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
+}
+
+/* ========== PROJECTS ========== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.project-card {
+  background: linear-gradient(145deg, #141b2d, #0e1422);
+  border-radius: 18px;
+  padding: 34px 32px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: inset 0 0 0 1px rgba(127,176,255,0.4),
+              0 18px 40px rgba(0,0,0,0.45);
+}
+
+.project-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #7fb0ff;
+  background: rgba(127,176,255,0.12);
+  margin-bottom: 20px;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  margin: 0 0 14px;
+}
+
+.project-card p {
+  color: #cfd6e6;
+  line-height: 1.7;
+  font-size: 15px;
+  margin: 0 0 22px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.project-tag {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  color: #a7c4ff;
+}
+
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 16px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #9fc5ff;
+  padding: 10px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(127,176,255,0.35);
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background: rgba(127,176,255,0.15);
+  color: #fff;
+}
+
+/* ========== CONTACT ========== */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(145deg, #141b2d, #0e1422);
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(127,176,255,0.4);
+}
+
+.contact-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #7fb0ff;
+  background: rgba(127,176,255,0.12);
+}
+
+.contact-item .label {
+  font-size: 13px;
+  color: #8a92a3;
+  margin-bottom: 4px;
+}
+
+.contact-item .value {
+  font-size: 16px;
+  color: #e6e8eb;
+  word-break: break-word;
 }
 
 /* ========== FOOTER ========== */
@@ -366,8 +508,8 @@ footer {
   </div>
 
   <!-- HIGHLIGHTS -->
-<h2 style="margin-top:60px; text-align:center;">A Few Highlights</h2>
-<div class="section-line" style="margin: 0 auto 30px;"></div>
+  <h2 style="margin-top:60px; text-align:center;">A Few Highlights</h2>
+  <div class="section-line" style="margin: 0 auto 30px;"></div>
 
 
   <div class="highlights">
@@ -395,7 +537,6 @@ footer {
 
 <!-- RECOGNITION -->
 <section id="recognition">
-  <section id="recognition">
   <div class="recognition-wrapper">
 
     <h2>Professional Recognition</h2>
@@ -445,7 +586,7 @@ footer {
   </div>
 </section>
 
- 
+
 <!-- ===== PROFESSIONAL JOURNEY ===== -->
 <section id="journey">
   <h2 style="text-align:center;">Professional Journey</h2>
@@ -462,8 +603,7 @@ footer {
     A progression through increasing responsibility in institutional portfolio operations,
     client service, and operational leadership within a highly regulated financial environment.
   </p>
-</div>
-  
+
   <!-- ===== BNY – Representative ===== -->
   <div class="card">
     <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
@@ -497,7 +637,7 @@ footer {
            style="width:42px; height:42px; border-radius:50%; background:#fff; padding:6px;">
       <div>
         <h3 style="margin:0;">Bank of New York Mellon</h3>
-        <p style="margin stu:4px 0 0; color:#8fa8ff; font-size:14px;">
+        <p style="margin:4px 0 0; color:#8fa8ff; font-size:14px;">
           Intermediate Representative – Client Processing
         </p>
       </div>
@@ -545,18 +685,122 @@ footer {
     </ul>
   </div>
 
-</div>
+</section>
 
 
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <h2 style="text-align:center;">Projects</h2>
+  <div class="section-line" style="margin: 0 auto 30px;"></div>
 
-<section id="projects"></section>
+  <p style="
+    max-width: 760px;
+    margin: 0 auto 50px;
+    text-align: center;
+    color: #a7adbb;
+    line-height: 1.7;
+    font-size: 17px;
+  ">
+    Applied finance and analytics work combining structured-finance modeling with
+    data-driven portfolio analysis in Python.
+  </p>
 
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-sitemap"></i></div>
+      <h3>CLO Cashflow Engine</h3>
+      <p>
+        A modular Python engine that models Collateralized Loan Obligation (CLO) cashflows
+        end to end. It loads loan-level data, builds a pool summary, runs OC and IC coverage
+        tests, and executes the payment waterfall across tranches based on configurable
+        trigger logic, then generates a structured report of the results.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Pandas</span>
+        <span class="project-tag">Structured Finance</span>
+        <span class="project-tag">Waterfall Modeling</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="https://github.com/manohar1008303" target="_blank">
+          <i class="fab fa-github"></i> View Code
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Loan Portfolio Optimization Analysis</h3>
+      <p>
+        A data analysis project examining an optimized leveraged-loan portfolio. It analyzes
+        allocation and industry exposure, visualizes risk versus return, and computes key
+        metrics, achieving a 3.92% expected return at a 3.27% average default probability with
+        a portfolio WARF of 3050 across a diversified, multi-sector book.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Pandas</span>
+        <span class="project-tag">Matplotlib</span>
+        <span class="project-tag">Seaborn</span>
+        <span class="project-tag">Portfolio Analytics</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="https://github.com/manohar1008303" target="_blank">
+          <i class="fab fa-github"></i> View Code
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== CONTACT ===== -->
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="section-line"></div>
-  <div class="card">
-    <p>Email: manohar.gourai@gmail.com</p>
-        <p>Phone: (720)6663310</p>
+  <h2 style="text-align:center;">Contact</h2>
+  <div class="section-line" style="margin: 0 auto 30px;"></div>
+
+  <p style="
+    max-width: 640px;
+    margin: 0 auto 40px;
+    text-align: center;
+    color: #a7adbb;
+    line-height: 1.7;
+    font-size: 17px;
+  ">
+    Open to opportunities in finance, analytics, and portfolio operations.
+    Feel free to reach out — I’d be glad to connect.
+  </p>
+
+  <div class="contact-wrapper">
+
+    <a class="contact-item" href="mailto:manohar.gourai@gmail.com">
+      <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+      <div>
+        <div class="label">Email</div>
+        <div class="value">manohar.gourai@gmail.com</div>
+      </div>
+    </a>
+
+    <a class="contact-item" href="https://www.linkedin.com/in/manohar-gourai-447658177/" target="_blank">
+      <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+      <div>
+        <div class="label">LinkedIn</div>
+        <div class="value">Manohar Gourai</div>
+      </div>
+    </a>
+
+    <a class="contact-item" href="https://github.com/manohar1008303" target="_blank">
+      <div class="contact-icon"><i class="fab fa-github"></i></div>
+      <div>
+        <div class="label">GitHub</div>
+        <div class="value">manohar1008303</div>
+      </div>
+    </a>
+
   </div>
 </section>
 
