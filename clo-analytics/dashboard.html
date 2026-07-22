@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CLO Portfolio & Compliance Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --border:#2a3240;
+    --txt:#e6edf3; --muted:#8b98a9; --accent:#4f9cf9; --green:#3fb950;
+    --red:#f85149; --amber:#e3b341; --purple:#bc8cff; --teal:#39c5cf;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:14px}
+  header{padding:22px 28px;border-bottom:1px solid var(--border);
+    background:linear-gradient(180deg,#131a24,#0d1117)}
+  header h1{margin:0;font-size:20px;font-weight:650;letter-spacing:.2px}
+  header p{margin:4px 0 0;color:var(--muted);font-size:12.5px}
+  .wrap{padding:20px 28px;max-width:1280px;margin:0 auto}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px}
+  .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:15px 16px}
+  .kpi .v{font-size:23px;font-weight:680;letter-spacing:.3px}
+  .kpi .l{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;margin-top:3px}
+  .kpi.good .v{color:var(--green)} .kpi.warn .v{color:var(--amber)} .kpi.bad .v{color:var(--red)}
+  nav{display:flex;gap:6px;margin:22px 0 16px;flex-wrap:wrap}
+  nav button{background:var(--panel);color:var(--muted);border:1px solid var(--border);
+    padding:9px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:550}
+  nav button.active{background:var(--accent);color:#04121f;border-color:var(--accent)}
+  .tab{display:none} .tab.active{display:block}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:1.3fr 1fr}
+  @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+  .card h3{margin:0 0 4px;font-size:14.5px;font-weight:620}
+  .card .sub{color:var(--muted);font-size:12px;margin:0 0 14px}
+  table{width:100%;border-collapse:collapse;font-size:12.7px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--border)}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.5px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:640}
+  .pass{background:rgba(63,185,80,.15);color:var(--green)}
+  .fail{background:rgba(248,81,73,.16);color:var(--red)}
+  .esc{background:rgba(227,179,65,.16);color:var(--amber)}
+  .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  select{background:var(--panel2);color:var(--txt);border:1px solid var(--border);
+    padding:8px 12px;border-radius:8px;font-size:13px}
+  .cushion-neg{color:var(--red);font-weight:640} .cushion-pos{color:var(--green)}
+  canvas{max-height:300px}
+  .foot{color:var(--muted);font-size:11.5px;margin:26px 0 10px;text-align:center}
+  .mono{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header>
+  <h1>CLO Portfolio &amp; Compliance Dashboard</h1>
+  <p>Loan syndication · CLO indenture compliance · payment waterfall · trustee reconciliation &nbsp;|&nbsp; synthetic data · as of 2025-07-15</p>
+  <p style="margin-top:6px"><span style="background:rgba(79,156,249,.16);color:var(--accent);padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:640">★ Featured client: Golub Capital</span> &nbsp;<span style="color:var(--muted);font-size:12px">— flagship middle-market CLO, pre-selected in the deal filters</span></p>
+</header>
+<div class="wrap">
+  <div class="kpis" id="kpis"></div>
+
+  <nav>
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="compliance">Compliance Tests</button>
+    <button data-tab="waterfall">Payment Waterfall</button>
+    <button data-tab="portfolio">Portfolio &amp; Credit</button>
+    <button data-tab="recon">Trustee Reconciliation</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="tab active" id="overview">
+    <div class="grid g2">
+      <div class="card"><h3>Collateral par by deal</h3><p class="sub">Aggregate principal balance per CLO</p><canvas id="c_parByDeal"></canvas></div>
+      <div class="card"><h3>Compliance status</h3><p class="sub">Latest-period test results across all deals</p><canvas id="c_compStatus"></canvas></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Deal summary</h3><p class="sub">Key collateral metrics per CLO</p>
+      <div id="t_portfolio"></div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE -->
+  <section class="tab" id="compliance">
+    <div class="toolbar"><label>Deal:</label><select id="sel_comp"></select></div>
+    <div class="grid g3">
+      <div class="card"><h3>Compliance scorecard</h3><p class="sub">Latest period · cushion = distance inside the trigger</p><div id="t_comp"></div></div>
+      <div class="card"><h3>OC cushion trend</h3><p class="sub">Overcollateralisation headroom over time (pp)</p><canvas id="c_ocTrend"></canvas></div>
+    </div>
+  </section>
+
+  <!-- WATERFALL -->
+  <section class="tab" id="waterfall">
+    <div class="toolbar"><label>Deal:</label><select id="sel_wf"></select></div>
+    <div class="grid g2">
+      <div class="card"><h3>Interest waterfall — latest period</h3><p class="sub">Interest paid senior → subordinated ($)</p><canvas id="c_wf"></canvas></div>
+      <div class="card"><h3>Equity distribution yield</h3><p class="sub">Annualised cash-on-cash to sub-notes (%)</p><canvas id="c_eq"></canvas></div>
+    </div>
+    <div class="card" style="margin-top:16px"><h3>Waterfall detail</h3><p class="sub">Priority of payments for the selected deal</p><div id="t_wf"></div></div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="tab" id="portfolio">
+    <div class="grid g2">
+      <div class="card"><h3>Rating distribution</h3><p class="sub">Par-weighted, whole book (Moody's)</p><canvas id="c_ratings"></canvas></div>
+      <div class="card"><h3>Industry concentration</h3><p class="sub">Top industries by par</p><canvas id="c_industry"></canvas></div>
+    </div>
+    <div class="card" style="margin-top:16px"><h3>Top obligor exposures</h3><p class="sub">Largest borrowers across all deals</p><div id="t_obligors"></div></div>
+  </section>
+
+  <!-- RECON -->
+  <section class="tab" id="recon">
+    <div class="grid g2">
+      <div class="card"><h3>Break composition</h3><p class="sub">Open breaks by type</p><canvas id="c_breakType"></canvas></div>
+      <div class="card"><h3>Aged-break buckets</h3><p class="sub">Open breaks by age (SLA view)</p><canvas id="c_aged"></canvas></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Reconciliation by deal</h3><p class="sub">Match rate &amp; gross break exposure</p><div id="t_recon"></div></div>
+      <div class="card"><h3>Largest open breaks</h3><p class="sub">Escalation worklist — top exposures</p><div id="t_breaks"></div></div>
+    </div>
+  </section>
+
+  <div class="foot">Built by Manohar Gourai · SQL + BI portfolio project · synthetic data, no confidential information</div>
+</div>
+
+<script>
+const D = {"kpi": {"deals": 4, "loans": 700, "par": 2010000000.0099995, "warf": 2403.0, "pass_rate": 96.3, "match_rate": 87.7, "open_fails": 3, "escalations": 40}, "deals": [{"deal_id": "CLO-GOLB-241", "deal_name": "Golub Capital Partners CLO 2024-1", "deal_type": "Middle Market", "manager": "Golub Capital"}, {"deal_id": "CLO-ARES-222", "deal_name": "Ares Middle Market CLO 2022-2", "deal_type": "Middle Market", "manager": "ARES"}, {"deal_id": "CLO-BAIN-241", "deal_name": "Bain Capital US CLO 2024-1", "deal_type": "Broadly Syndicated", "manager": "Bain Capital"}, {"deal_id": "CLO-CARL-231", "deal_name": "Carlyle US CLO 2023-1", "deal_type": "Broadly Syndicated", "manager": "Carlyle"}], "portfolio": [{"deal_name": "Ares Middle Market CLO 2022-2", "deal_type": "Middle Market", "num_loans": 150, "num_obligors": 150, "par": 402000000.0, "warf": 2446.0, "spread": 494.7, "price": 97.07, "defaulted": 1.77, "ccc": 4.16}, {"deal_name": "Bain Capital US CLO 2024-1", "deal_type": "Broadly Syndicated", "num_loans": 165, "num_obligors": 165, "par": 452250000.0, "warf": 2446.0, "spread": 501.8, "price": 97.61, "defaulted": 1.29, "ccc": 3.74}, {"deal_name": "Carlyle US CLO 2023-1", "deal_type": "Broadly Syndicated", "num_loans": 170, "num_obligors": 170, "par": 502500000.0, "warf": 2407.0, "spread": 495.1, "price": 97.74, "defaulted": 0.41, "ccc": 4.5}, {"deal_name": "Golub Capital Partners CLO 2024-1", "deal_type": "Middle Market", "num_loans": 215, "num_obligors": 215, "par": 653250000.0, "warf": 2358.0, "spread": 493.1, "price": 97.85, "defaulted": 0.54, "ccc": 4.18}], "compliance": [{"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class C IC Test", "threshold_type": "min", "threshold_value": 115.0, "actual_value": 188.96, "cushion": 73.96, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class C OC Test", "threshold_type": "min", "threshold_value": 119.5, "actual_value": 125.54, "cushion": 6.04, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class D IC Test", "threshold_type": "min", "threshold_value": 110.0, "actual_value": 174.08, "cushion": 64.08, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class D OC Test", "threshold_type": "min", "threshold_value": 112.8, "actual_value": 117.32, "cushion": 4.52, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class E IC Test", "threshold_type": "min", "threshold_value": 105.0, "actual_value": 160.03, "cushion": 55.03, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class E OC Test", "threshold_type": "min", "threshold_value": 107.2, "actual_value": 111.36, "cushion": 4.16, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class F IC Test", "threshold_type": "min", "threshold_value": 102.5, "actual_value": 153.43, "cushion": 50.93, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Coverage", "test_name": "Class F OC Test", "threshold_type": "min", "threshold_value": 104.5, "actual_value": 108.9, "cushion": 4.39, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Collateral Quality", "test_name": "Weighted Avg Rating Factor (WARF)", "threshold_type": "max", "threshold_value": 2900.0, "actual_value": 2409.21, "cushion": 490.79, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Collateral Quality", "test_name": "Weighted Avg Spread (WAS)", "threshold_type": "min", "threshold_value": 340.0, "actual_value": 494.15, "cushion": 154.15, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Concentration", "test_name": "Caa/CCC Bucket", "threshold_type": "max", "threshold_value": 7.5, "actual_value": 4.54, "cushion": 2.96, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Concentration", "test_name": "Defaulted Obligations", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 2.04, "cushion": -0.04, "result": "FAIL"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Concentration", "test_name": "Largest Moody's Industry", "threshold_type": "max", "threshold_value": 12.0, "actual_value": 10.82, "cushion": 1.18, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Concentration", "test_name": "Largest Obligor", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.94, "cushion": 1.06, "result": "PASS"}, {"deal_name": "Ares Middle Market CLO 2022-2", "test_category": "Concentration", "test_name": "Second Lien Loans", "threshold_type": "max", "threshold_value": 5.0, "actual_value": 4.06, "cushion": 0.94, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class C IC Test", "threshold_type": "min", "threshold_value": 115.0, "actual_value": 190.57, "cushion": 75.57, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class C OC Test", "threshold_type": "min", "threshold_value": 119.5, "actual_value": 125.7, "cushion": 6.2, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class D IC Test", "threshold_type": "min", "threshold_value": 110.0, "actual_value": 175.56, "cushion": 65.56, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class D OC Test", "threshold_type": "min", "threshold_value": 112.8, "actual_value": 117.47, "cushion": 4.67, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class E IC Test", "threshold_type": "min", "threshold_value": 105.0, "actual_value": 161.39, "cushion": 56.39, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class E OC Test", "threshold_type": "min", "threshold_value": 107.2, "actual_value": 111.5, "cushion": 4.3, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class F IC Test", "threshold_type": "min", "threshold_value": 102.5, "actual_value": 154.73, "cushion": 52.23, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Coverage", "test_name": "Class F OC Test", "threshold_type": "min", "threshold_value": 104.5, "actual_value": 109.04, "cushion": 4.54, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Rating Factor (WARF)", "threshold_type": "max", "threshold_value": 2900.0, "actual_value": 2412.99, "cushion": 487.01, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Spread (WAS)", "threshold_type": "min", "threshold_value": 340.0, "actual_value": 501.53, "cushion": 161.53, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Concentration", "test_name": "Caa/CCC Bucket", "threshold_type": "max", "threshold_value": 7.5, "actual_value": 4.08, "cushion": 3.42, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Concentration", "test_name": "Defaulted Obligations", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 1.49, "cushion": 0.51, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Concentration", "test_name": "Largest Moody's Industry", "threshold_type": "max", "threshold_value": 12.0, "actual_value": 9.02, "cushion": 2.98, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Concentration", "test_name": "Largest Obligor", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.87, "cushion": 1.13, "result": "PASS"}, {"deal_name": "Bain Capital US CLO 2024-1", "test_category": "Concentration", "test_name": "Second Lien Loans", "threshold_type": "max", "threshold_value": 5.0, "actual_value": 5.18, "cushion": -0.18, "result": "FAIL"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class C IC Test", "threshold_type": "min", "threshold_value": 115.0, "actual_value": 190.27, "cushion": 75.27, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class C OC Test", "threshold_type": "min", "threshold_value": 119.5, "actual_value": 126.32, "cushion": 6.82, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class D IC Test", "threshold_type": "min", "threshold_value": 110.0, "actual_value": 175.28, "cushion": 65.28, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class D OC Test", "threshold_type": "min", "threshold_value": 112.8, "actual_value": 118.05, "cushion": 5.25, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class E IC Test", "threshold_type": "min", "threshold_value": 105.0, "actual_value": 161.13, "cushion": 56.13, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class E OC Test", "threshold_type": "min", "threshold_value": 107.2, "actual_value": 112.05, "cushion": 4.85, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class F IC Test", "threshold_type": "min", "threshold_value": 102.5, "actual_value": 154.48, "cushion": 51.98, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Coverage", "test_name": "Class F OC Test", "threshold_type": "min", "threshold_value": 104.5, "actual_value": 109.57, "cushion": 5.07, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Rating Factor (WARF)", "threshold_type": "max", "threshold_value": 2900.0, "actual_value": 2368.34, "cushion": 531.66, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Spread (WAS)", "threshold_type": "min", "threshold_value": 340.0, "actual_value": 494.83, "cushion": 154.83, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Concentration", "test_name": "Caa/CCC Bucket", "threshold_type": "max", "threshold_value": 7.5, "actual_value": 4.46, "cushion": 3.04, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Concentration", "test_name": "Defaulted Obligations", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.47, "cushion": 1.53, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Concentration", "test_name": "Largest Moody's Industry", "threshold_type": "max", "threshold_value": 12.0, "actual_value": 10.57, "cushion": 1.43, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Concentration", "test_name": "Largest Obligor", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.84, "cushion": 1.16, "result": "PASS"}, {"deal_name": "Carlyle US CLO 2023-1", "test_category": "Concentration", "test_name": "Second Lien Loans", "threshold_type": "max", "threshold_value": 5.0, "actual_value": 4.28, "cushion": 0.72, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class C IC Test", "threshold_type": "min", "threshold_value": 115.0, "actual_value": 189.6, "cushion": 74.6, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class C OC Test", "threshold_type": "min", "threshold_value": 119.5, "actual_value": 126.09, "cushion": 6.59, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class D IC Test", "threshold_type": "min", "threshold_value": 110.0, "actual_value": 174.66, "cushion": 64.66, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class D OC Test", "threshold_type": "min", "threshold_value": 112.8, "actual_value": 117.84, "cushion": 5.04, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class E IC Test", "threshold_type": "min", "threshold_value": 105.0, "actual_value": 160.57, "cushion": 55.57, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class E OC Test", "threshold_type": "min", "threshold_value": 107.2, "actual_value": 111.85, "cushion": 4.65, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class F IC Test", "threshold_type": "min", "threshold_value": 102.5, "actual_value": 153.94, "cushion": 51.44, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Coverage", "test_name": "Class F OC Test", "threshold_type": "min", "threshold_value": 104.5, "actual_value": 109.37, "cushion": 4.87, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Rating Factor (WARF)", "threshold_type": "max", "threshold_value": 2900.0, "actual_value": 2330.54, "cushion": 569.46, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Collateral Quality", "test_name": "Weighted Avg Spread (WAS)", "threshold_type": "min", "threshold_value": 340.0, "actual_value": 493.08, "cushion": 153.08, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Concentration", "test_name": "Caa/CCC Bucket", "threshold_type": "max", "threshold_value": 7.5, "actual_value": 4.56, "cushion": 2.94, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Concentration", "test_name": "Defaulted Obligations", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.62, "cushion": 1.38, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Concentration", "test_name": "Largest Moody's Industry", "threshold_type": "max", "threshold_value": 12.0, "actual_value": 8.79, "cushion": 3.21, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Concentration", "test_name": "Largest Obligor", "threshold_type": "max", "threshold_value": 2.0, "actual_value": 0.68, "cushion": 1.32, "result": "PASS"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "test_category": "Concentration", "test_name": "Second Lien Loans", "threshold_type": "max", "threshold_value": 5.0, "actual_value": 5.07, "cushion": -0.07, "result": "FAIL"}], "oc_trend": [{"deal_name": "Ares Middle Market CLO 2022-2", "period": "2024-Q4", "test_name": "Class C OC Test", "cushion": 7.57}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q1", "test_name": "Class C OC Test", "cushion": 7.06}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q2", "test_name": "Class C OC Test", "cushion": 6.55}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q3", "test_name": "Class C OC Test", "cushion": 6.04}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2024-Q4", "test_name": "Class D OC Test", "cushion": 5.95}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q1", "test_name": "Class D OC Test", "cushion": 5.47}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q2", "test_name": "Class D OC Test", "cushion": 5.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q3", "test_name": "Class D OC Test", "cushion": 4.52}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2024-Q4", "test_name": "Class E OC Test", "cushion": 5.51}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q1", "test_name": "Class E OC Test", "cushion": 5.06}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q2", "test_name": "Class E OC Test", "cushion": 4.61}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q3", "test_name": "Class E OC Test", "cushion": 4.16}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2024-Q4", "test_name": "Class F OC Test", "cushion": 5.72}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q1", "test_name": "Class F OC Test", "cushion": 5.28}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q2", "test_name": "Class F OC Test", "cushion": 4.84}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q3", "test_name": "Class F OC Test", "cushion": 4.39}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2024-Q4", "test_name": "Class C OC Test", "cushion": 7.73}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q1", "test_name": "Class C OC Test", "cushion": 7.22}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q2", "test_name": "Class C OC Test", "cushion": 6.71}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q3", "test_name": "Class C OC Test", "cushion": 6.2}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2024-Q4", "test_name": "Class D OC Test", "cushion": 6.1}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q1", "test_name": "Class D OC Test", "cushion": 5.62}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q2", "test_name": "Class D OC Test", "cushion": 5.15}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q3", "test_name": "Class D OC Test", "cushion": 4.67}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2024-Q4", "test_name": "Class E OC Test", "cushion": 5.65}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q1", "test_name": "Class E OC Test", "cushion": 5.2}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q2", "test_name": "Class E OC Test", "cushion": 4.75}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q3", "test_name": "Class E OC Test", "cushion": 4.3}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2024-Q4", "test_name": "Class F OC Test", "cushion": 5.86}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q1", "test_name": "Class F OC Test", "cushion": 5.42}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q2", "test_name": "Class F OC Test", "cushion": 4.98}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q3", "test_name": "Class F OC Test", "cushion": 4.54}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2024-Q4", "test_name": "Class C OC Test", "cushion": 8.36}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q1", "test_name": "Class C OC Test", "cushion": 7.85}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q2", "test_name": "Class C OC Test", "cushion": 7.33}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q3", "test_name": "Class C OC Test", "cushion": 6.82}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2024-Q4", "test_name": "Class D OC Test", "cushion": 6.68}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q1", "test_name": "Class D OC Test", "cushion": 6.21}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q2", "test_name": "Class D OC Test", "cushion": 5.73}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q3", "test_name": "Class D OC Test", "cushion": 5.25}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2024-Q4", "test_name": "Class E OC Test", "cushion": 6.21}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q1", "test_name": "Class E OC Test", "cushion": 5.76}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q2", "test_name": "Class E OC Test", "cushion": 5.3}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q3", "test_name": "Class E OC Test", "cushion": 4.85}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2024-Q4", "test_name": "Class F OC Test", "cushion": 6.4}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q1", "test_name": "Class F OC Test", "cushion": 5.96}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q2", "test_name": "Class F OC Test", "cushion": 5.52}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q3", "test_name": "Class F OC Test", "cushion": 5.07}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2024-Q4", "test_name": "Class C OC Test", "cushion": 8.13}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q1", "test_name": "Class C OC Test", "cushion": 7.61}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q2", "test_name": "Class C OC Test", "cushion": 7.1}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q3", "test_name": "Class C OC Test", "cushion": 6.59}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2024-Q4", "test_name": "Class D OC Test", "cushion": 6.47}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q1", "test_name": "Class D OC Test", "cushion": 5.99}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q2", "test_name": "Class D OC Test", "cushion": 5.51}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q3", "test_name": "Class D OC Test", "cushion": 5.04}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2024-Q4", "test_name": "Class E OC Test", "cushion": 6.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q1", "test_name": "Class E OC Test", "cushion": 5.55}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q2", "test_name": "Class E OC Test", "cushion": 5.1}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q3", "test_name": "Class E OC Test", "cushion": 4.65}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2024-Q4", "test_name": "Class F OC Test", "cushion": 6.2}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q1", "test_name": "Class F OC Test", "cushion": 5.76}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q2", "test_name": "Class F OC Test", "cushion": 5.32}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q3", "test_name": "Class F OC Test", "cushion": 4.87}], "ratings": [{"rating": "Baa3", "rank_order": 10, "par": 126589106.0}, {"rating": "Ba1", "rank_order": 11, "par": 67916280.0}, {"rating": "Ba2", "rank_order": 12, "par": 171885811.0}, {"rating": "Ba3", "rank_order": 13, "par": 191423258.0}, {"rating": "B1", "rank_order": 14, "par": 496012487.0}, {"rating": "B2", "rank_order": 15, "par": 602295041.0}, {"rating": "B3", "rank_order": 16, "par": 270279904.0}, {"rating": "Caa1", "rank_order": 17, "par": 56708605.0}, {"rating": "Caa2", "rank_order": 18, "par": 26889508.0}], "industry": [{"industry": "Aerospace & Defense", "par": 174365791.0}, {"industry": "Construction & Building", "par": 163621809.0}, {"industry": "Services: Business", "par": 150199610.0}, {"industry": "Media: Broadcasting", "par": 145605488.0}, {"industry": "Chemicals, Plastics & Rubber", "par": 138464004.0}, {"industry": "Capital Equipment", "par": 138092990.0}, {"industry": "Hotel, Gaming & Leisure", "par": 132028975.0}, {"industry": "Automotive", "par": 128410284.0}, {"industry": "Banking, Finance, Insurance", "par": 121785856.0}, {"industry": "High Tech Industries", "par": 114940796.0}, {"industry": "Consumer Goods: Durable", "par": 109950046.0}, {"industry": "Healthcare & Pharmaceuticals", "par": 103640627.0}, {"industry": "Energy: Oil & Gas", "par": 99351586.0}, {"industry": "Retail", "par": 99144385.0}, {"industry": "Telecommunications", "par": 97296692.0}, {"industry": "Beverage, Food & Tobacco", "par": 93101061.0}], "waterfall": [{"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "A", "seniority_rank": 1, "interest_paid": 4222200.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "B", "seniority_rank": 2, "interest_paid": 753900.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "C", "seniority_rank": 3, "interest_paid": 445800.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "D", "seniority_rank": 4, "interest_paid": 463650.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "E", "seniority_rank": 5, "interest_paid": 516600.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "F", "seniority_rank": 6, "interest_paid": 275600.0, "deferred": 0.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "class_name": "Sub", "seniority_rank": 7, "interest_paid": 3215982.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "A", "seniority_rank": 1, "interest_paid": 4749975.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "B", "seniority_rank": 2, "interest_paid": 848138.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "C", "seniority_rank": 3, "interest_paid": 501525.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "D", "seniority_rank": 4, "interest_paid": 521606.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "E", "seniority_rank": 5, "interest_paid": 581175.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "F", "seniority_rank": 6, "interest_paid": 310050.0, "deferred": 0.0}, {"deal_name": "Bain Capital US CLO 2024-1", "class_name": "Sub", "seniority_rank": 7, "interest_paid": 3715853.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "A", "seniority_rank": 1, "interest_paid": 5277750.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "B", "seniority_rank": 2, "interest_paid": 942375.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "C", "seniority_rank": 3, "interest_paid": 557250.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "D", "seniority_rank": 4, "interest_paid": 579563.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "E", "seniority_rank": 5, "interest_paid": 645750.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "F", "seniority_rank": 6, "interest_paid": 344500.0, "deferred": 0.0}, {"deal_name": "Carlyle US CLO 2023-1", "class_name": "Sub", "seniority_rank": 7, "interest_paid": 4108203.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "A", "seniority_rank": 1, "interest_paid": 6861075.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "B", "seniority_rank": 2, "interest_paid": 1225088.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "C", "seniority_rank": 3, "interest_paid": 724425.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "D", "seniority_rank": 4, "interest_paid": 753431.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "E", "seniority_rank": 5, "interest_paid": 839475.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "F", "seniority_rank": 6, "interest_paid": 447850.0, "deferred": 0.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "class_name": "Sub", "seniority_rank": 7, "interest_paid": 5281762.0, "deferred": 0.0}], "equity_trend": [{"deal_name": "Ares Middle Market CLO 2022-2", "period": "2024-Q4", "yield": 33.85}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q1", "yield": 33.85}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q2", "yield": 33.85}, {"deal_name": "Ares Middle Market CLO 2022-2", "period": "2025-Q3", "yield": 33.85}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2024-Q4", "yield": 34.77}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q1", "yield": 34.77}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q2", "yield": 34.77}, {"deal_name": "Bain Capital US CLO 2024-1", "period": "2025-Q3", "yield": 34.77}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2024-Q4", "yield": 34.6}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q1", "yield": 34.6}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q2", "yield": 34.6}, {"deal_name": "Carlyle US CLO 2023-1", "period": "2025-Q3", "yield": 34.6}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2024-Q4", "yield": 34.21}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q1", "yield": 34.21}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q2", "yield": 34.21}, {"deal_name": "Golub Capital Partners CLO 2024-1", "period": "2025-Q3", "yield": 34.21}], "recon_summary": [{"deal_name": "Carlyle US CLO 2023-1", "positions": 170, "matched": 147, "breaks": 23, "match_rate": 86.5, "exposure": 35193015.0}, {"deal_name": "Bain Capital US CLO 2024-1", "positions": 165, "matched": 143, "breaks": 22, "match_rate": 86.7, "exposure": 42306606.0}, {"deal_name": "Golub Capital Partners CLO 2024-1", "positions": 215, "matched": 190, "breaks": 25, "match_rate": 88.4, "exposure": 44257382.0}, {"deal_name": "Ares Middle Market CLO 2022-2", "positions": 150, "matched": 134, "breaks": 16, "match_rate": 89.3, "exposure": 21653810.0}], "break_types": [{"break_type": "Position Break", "n": 44, "exposure": 26699683.0}, {"break_type": "Missing Internally", "n": 23, "exposure": 64070881.0}, {"break_type": "Missing at Trustee", "n": 19, "exposure": 52640249.0}], "aged": [{"bucket": "1-5d", "n": 15, "mn": 1}, {"bucket": "6-15d", "n": 31, "mn": 6}, {"bucket": "16-30d", "n": 32, "mn": 16}, {"bucket": "30+d", "n": 8, "mn": 32}], "top_breaks": [{"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00060", "obligor_name": "Redwood Energy", "break_type": "Missing at Trustee", "break_amount": -4359737.0, "age_days": 10, "status": "Open"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00115", "obligor_name": "Sequoia Foods", "break_type": "Missing Internally", "break_amount": 3937929.0, "age_days": 18, "status": "Escalated"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00045", "obligor_name": "Cardinal Pharma", "break_type": "Missing Internally", "break_amount": 3880334.0, "age_days": 7, "status": "Open"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00180", "obligor_name": "Granite Pharma", "break_type": "Missing at Trustee", "break_amount": -3805227.0, "age_days": 4, "status": "Open"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00041", "obligor_name": "Halyard Industries", "break_type": "Missing Internally", "break_amount": 3756672.0, "age_days": 11, "status": "Open"}, {"deal_name": "Ares Middle Market CLO 2022-2", "asset_id": "A00507", "obligor_name": "Granite Materials", "break_type": "Missing at Trustee", "break_amount": -3755087.0, "age_days": 19, "status": "Escalated"}, {"deal_name": "Carlyle US CLO 2023-1", "asset_id": "A00357", "obligor_name": "Pioneer Health", "break_type": "Missing at Trustee", "break_amount": -3590697.0, "age_days": 22, "status": "Escalated"}, {"deal_name": "Bain Capital US CLO 2024-1", "asset_id": "A00661", "obligor_name": "Summit Partners", "break_type": "Missing at Trustee", "break_amount": -3538163.0, "age_days": 10, "status": "Open"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00069", "obligor_name": "Harbor Group", "break_type": "Missing Internally", "break_amount": 3522559.0, "age_days": 5, "status": "Open"}, {"deal_name": "Bain Capital US CLO 2024-1", "asset_id": "A00587", "obligor_name": "Atlas Foods", "break_type": "Missing Internally", "break_amount": 3503873.0, "age_days": 21, "status": "Escalated"}, {"deal_name": "Bain Capital US CLO 2024-1", "asset_id": "A00692", "obligor_name": "Halyard Foods", "break_type": "Missing Internally", "break_amount": 3412879.0, "age_days": 23, "status": "Escalated"}, {"deal_name": "Golub Capital Partners CLO 2024-1", "asset_id": "A00006", "obligor_name": "Cascade Partners", "break_type": "Missing Internally", "break_amount": 3406463.0, "age_days": 5, "status": "Open"}], "top_obligors": [{"obligor_name": "Beacon Energy", "moodys_rating": "Baa3", "industry": "Consumer Goods: Durable", "par": 14753540.0}, {"obligor_name": "Ironwood Group", "moodys_rating": "Ba2", "industry": "Services: Business", "par": 13910553.0}, {"obligor_name": "Cobalt Devices", "moodys_rating": "B2", "industry": "Healthcare & Pharmaceuticals", "par": 13485146.0}, {"obligor_name": "Redwood Brands", "moodys_rating": "B2", "industry": "Capital Equipment", "par": 13134176.0}, {"obligor_name": "Ridgeline Systems", "moodys_rating": "B1", "industry": "Telecommunications", "par": 12693287.0}, {"obligor_name": "Meridian Energy", "moodys_rating": "B3", "industry": "Services: Business", "par": 12577834.0}, {"obligor_name": "Halyard Systems", "moodys_rating": "B3", "industry": "High Tech Industries", "par": 12285367.0}, {"obligor_name": "Aegis Media", "moodys_rating": "B2", "industry": "Banking, Finance, Insurance", "par": 12246144.0}, {"obligor_name": "Cascade Partners", "moodys_rating": "B1", "industry": "Banking, Finance, Insurance", "par": 12042173.0}, {"obligor_name": "Pinnacle Brands", "moodys_rating": "B1", "industry": "Hotel, Gaming & Leisure", "par": 12016738.0}, {"obligor_name": "Meridian Group", "moodys_rating": "B1", "industry": "Automotive", "par": 11991042.0}, {"obligor_name": "Concord Industries", "moodys_rating": "B3", "industry": "Retail", "par": 11934843.0}]};
+const fmtM = v => '$'+(v/1e6).toLocaleString(undefined,{maximumFractionDigits:1})+'M';
+const fmt0 = v => Number(v).toLocaleString(undefined,{maximumFractionDigits:0});
+const C = {blue:'#4f9cf9',green:'#3fb950',red:'#f85149',amber:'#e3b341',purple:'#bc8cff',teal:'#39c5cf',muted:'#8b98a9'};
+Chart.defaults.color='#8b98a9'; Chart.defaults.borderColor='#2a3240'; Chart.defaults.font.size=11.5;
+
+/* KPIs */
+const k=D.kpi;
+document.getElementById('kpis').innerHTML = [
+  ['Collateral par', fmtM(k.par),''],
+  ['CLO deals', k.deals+' · '+fmt0(k.loans)+' loans',''],
+  ['Portfolio WARF', fmt0(k.warf), k.warf<2900?'good':'warn'],
+  ['Weighted avg — limit 2,900','','' ],
+  ['Compliance pass rate', k.pass_rate+'%', k.pass_rate>=90?'good':'warn'],
+  ['Open test failures', k.open_fails, k.open_fails>0?'bad':'good'],
+  ['Trustee match rate', k.match_rate+'%', k.match_rate>=95?'good':'warn'],
+  ['Escalated breaks', k.escalations, k.escalations>0?'warn':'good'],
+].filter((_,i)=>i!==3).map(([l,v,c])=>
+  `<div class="kpi ${c}"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
+
+/* tabs */
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); document.getElementById(b.dataset.tab).classList.add('active');
+});
+
+/* helper: table builder */
+function table(el, cols, rows, fmts={}){
+  let h='<table><thead><tr>'+cols.map(c=>`<th class="${c.num?'num':''}">${c.t}</th>`).join('')+'</tr></thead><tbody>';
+  rows.forEach(r=>{h+='<tr>'+cols.map(c=>{
+    let v=r[c.k]; if(c.fmt) v=c.fmt(v,r);
+    return `<td class="${c.num?'num':''}">${v==null?'':v}</td>`;}).join('')+'</tr>';});
+  document.getElementById(el).innerHTML=h+'</tbody></table>';
+}
+
+/* OVERVIEW */
+new Chart(c_parByDeal,{type:'bar',data:{labels:D.portfolio.map(d=>d.deal_name),
+  datasets:[{data:D.portfolio.map(d=>d.par),backgroundColor:C.blue,borderRadius:5}]},
+  options:{plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fmtM(v)}}}}});
+
+const passN=D.compliance.filter(t=>t.result==='PASS').length, failN=D.compliance.length-passN;
+new Chart(c_compStatus,{type:'doughnut',data:{labels:['Pass','Fail'],
+  datasets:[{data:[passN,failN],backgroundColor:[C.green,C.red],borderWidth:0}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom'}}}});
+
+table('t_portfolio',[
+  {t:'Deal',k:'deal_name'},{t:'Type',k:'deal_type'},
+  {t:'Loans',k:'num_loans',num:1},{t:'Obligors',k:'num_obligors',num:1},
+  {t:'Par',k:'par',num:1,fmt:fmtM},{t:'WARF',k:'warf',num:1,fmt:fmt0},
+  {t:'WAS bps',k:'spread',num:1},{t:'Price',k:'price',num:1},
+  {t:'Def %',k:'defaulted',num:1},{t:'CCC %',k:'ccc',num:1}],D.portfolio);
+
+/* COMPLIANCE */
+const deals=D.deals.map(d=>d.deal_name);
+function fillSel(id){document.getElementById(id).innerHTML=deals.map(d=>`<option>${d}</option>`).join('');}
+fillSel('sel_comp'); fillSel('sel_wf');
+let ocChart;
+function renderComp(){
+  const dn=sel_comp.value;
+  const rows=D.compliance.filter(r=>r.deal_name===dn);
+  table('t_comp',[
+    {t:'Category',k:'test_category'},{t:'Test',k:'test_name'},
+    {t:'Limit',k:'threshold_value',num:1,fmt:(v,r)=>(r.threshold_type==='min'?'≥ ':'≤ ')+v},
+    {t:'Actual',k:'actual_value',num:1},
+    {t:'Cushion',k:'cushion',num:1,fmt:v=>`<span class="${v<0?'cushion-neg':'cushion-pos'}">${v}</span>`},
+    {t:'Result',k:'result',fmt:v=>`<span class="pill ${v==='PASS'?'pass':'fail'}">${v}</span>`}],rows);
+  // OC trend
+  const oc=D.oc_trend.filter(r=>r.deal_name===dn);
+  const periods=[...new Set(oc.map(r=>r.period))];
+  const tests=[...new Set(oc.map(r=>r.test_name))];
+  const palette=[C.blue,C.green,C.amber,C.purple];
+  const ds=tests.map((t,i)=>({label:t.replace(' OC Test',''),
+    data:periods.map(p=>{const m=oc.find(r=>r.period===p&&r.test_name===t);return m?m.cushion:null;}),
+    borderColor:palette[i%4],backgroundColor:palette[i%4],tension:.25,fill:false}));
+  if(ocChart)ocChart.destroy();
+  ocChart=new Chart(c_ocTrend,{type:'line',data:{labels:periods,datasets:ds},
+    options:{plugins:{legend:{position:'bottom'}},scales:{y:{title:{display:true,text:'Cushion (pp)'}}}}});
+}
+sel_comp.onchange=renderComp; renderComp();
+
+/* WATERFALL */
+let wfChart,eqChart;
+function renderWf(){
+  const dn=sel_wf.value;
+  const rows=D.waterfall.filter(r=>r.deal_name===dn);
+  if(wfChart)wfChart.destroy();
+  wfChart=new Chart(c_wf,{type:'bar',data:{labels:rows.map(r=>'Class '+r.class_name),
+    datasets:[{label:'Interest paid',data:rows.map(r=>r.interest_paid),backgroundColor:C.teal,borderRadius:5},
+      {label:'Deferred (PIK)',data:rows.map(r=>r.deferred),backgroundColor:C.red,borderRadius:5}]},
+    options:{plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>fmtM(v)}}}}});
+  const eq=D.equity_trend.filter(r=>r.deal_name===dn);
+  if(eqChart)eqChart.destroy();
+  eqChart=new Chart(c_eq,{type:'line',data:{labels:eq.map(r=>r.period),
+    datasets:[{data:eq.map(r=>r.yield),borderColor:C.purple,backgroundColor:'rgba(188,140,255,.15)',fill:true,tension:.3}]},
+    options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Annualised %'}}}}});
+  table('t_wf',[
+    {t:'Step',k:'seniority_rank',num:1},{t:'Class',k:'class_name'},
+    {t:'Interest paid',k:'interest_paid',num:1,fmt:v=>'$'+fmt0(v)},
+    {t:'Deferred (PIK)',k:'deferred',num:1,fmt:v=>v>0?`<span class="cushion-neg">$${fmt0(v)}</span>`:'$0'}],rows);
+}
+sel_wf.onchange=renderWf; renderWf();
+
+/* PORTFOLIO */
+new Chart(c_ratings,{type:'bar',data:{labels:D.ratings.map(r=>r.rating),
+  datasets:[{data:D.ratings.map(r=>r.par),backgroundColor:D.ratings.map(r=>r.rank_order>=17?C.red:r.rank_order>=14?C.amber:C.blue),borderRadius:4}]},
+  options:{plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fmtM(v)}}}}});
+const ind=D.industry.slice(0,10);
+new Chart(c_industry,{type:'bar',data:{labels:ind.map(r=>r.industry),
+  datasets:[{data:ind.map(r=>r.par),backgroundColor:C.teal,borderRadius:4}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>fmtM(v)}}}}});
+table('t_obligors',[
+  {t:'Obligor',k:'obligor_name'},{t:'Rating',k:'moodys_rating'},{t:'Industry',k:'industry'},
+  {t:'Par',k:'par',num:1,fmt:v=>'$'+fmt0(v)}],D.top_obligors);
+
+/* RECON */
+new Chart(c_breakType,{type:'doughnut',data:{labels:D.break_types.map(r=>r.break_type),
+  datasets:[{data:D.break_types.map(r=>r.n),backgroundColor:[C.amber,C.red,C.purple,C.teal],borderWidth:0}]},
+  options:{cutout:'60%',plugins:{legend:{position:'bottom'}}}});
+new Chart(c_aged,{type:'bar',data:{labels:D.aged.map(r=>r.bucket),
+  datasets:[{data:D.aged.map(r=>r.n),backgroundColor:D.aged.map(r=>r.mn>=16?C.red:r.mn>=6?C.amber:C.green),borderRadius:5}]},
+  options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'# breaks'}}}}});
+table('t_recon',[
+  {t:'Deal',k:'deal_name'},{t:'Positions',k:'positions',num:1},{t:'Breaks',k:'breaks',num:1},
+  {t:'Match %',k:'match_rate',num:1},{t:'Exposure',k:'exposure',num:1,fmt:v=>'$'+fmt0(v)}],D.recon_summary);
+table('t_breaks',[
+  {t:'Deal',k:'deal_name',fmt:v=>v.split(' ')[0]},{t:'Obligor',k:'obligor_name'},
+  {t:'Type',k:'break_type'},{t:'Break',k:'break_amount',num:1,fmt:v=>'$'+fmt0(v)},
+  {t:'Age',k:'age_days',num:1},
+  {t:'Status',k:'status',fmt:v=>`<span class="pill ${v==='Escalated'?'esc':'pass'}">${v}</span>`}],D.top_breaks);
+</script>
+</body>
+</html>

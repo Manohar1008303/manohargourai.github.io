@@ -1,0 +1,301 @@
+obligor_id,obligor_name,industry,country,moodys_rating
+OB0001,Monarch Partners,Healthcare & Pharmaceuticals,United States,B1
+OB0002,Ironwood Technologies,"Banking, Finance, Insurance",United States,B2
+OB0003,Cobalt Foods,High Tech Industries,United States,B1
+OB0004,Ironwood Devices,Healthcare & Pharmaceuticals,United States,Caa2
+OB0005,Monarch Pharma,Energy: Oil & Gas,United States,B3
+OB0006,Beacon Holdings,"Hotel, Gaming & Leisure",United States,B1
+OB0007,Beacon Technologies,"Chemicals, Plastics & Rubber",Canada,B1
+OB0008,Meridian Group,Automotive,United States,B1
+OB0009,Everest Materials,High Tech Industries,United States,B2
+OB0010,Meridian Capital,Services: Business,United States,B3
+OB0011,Everest Logistics,"Chemicals, Plastics & Rubber",United States,Ba2
+OB0012,Sable Networks,Consumer Goods: Durable,United Kingdom,B1
+OB0013,Aegis Partners,Automotive,United States,B3
+OB0014,Ridgeline Logistics,"Hotel, Gaming & Leisure",United States,B1
+OB0015,Sable Materials,Services: Business,United States,Ba3
+OB0016,Vantage Networks,"Hotel, Gaming & Leisure",United States,B1
+OB0017,Cardinal Pharma,Aerospace & Defense,United States,Ba2
+OB0018,Ironwood Industries,Media: Broadcasting,United States,Ba2
+OB0019,Cascade Systems,"Chemicals, Plastics & Rubber",United States,B2
+OB0020,Pinnacle Energy,Telecommunications,United States,B1
+OB0021,Bluepeak Pharma,Construction & Building,United States,B2
+OB0022,Pinnacle Capital,Retail,United States,Ba3
+OB0023,Redwood Media,Services: Business,United States,Ba3
+OB0024,Atlas Solutions,Energy: Oil & Gas,United States,B2
+OB0025,Sequoia Energy,Construction & Building,United Kingdom,Ba1
+OB0026,Sable Partners,Construction & Building,United States,B1
+OB0027,Meridian Brands,Energy: Oil & Gas,United States,Ba1
+OB0028,Bluepeak Materials,"Hotel, Gaming & Leisure",United States,Ba3
+OB0029,Aegis Brands,"Chemicals, Plastics & Rubber",United States,Ba3
+OB0030,Vantage Devices,Healthcare & Pharmaceuticals,United States,B2
+OB0031,Summit Partners,Retail,United States,B1
+OB0032,Ironwood Group,Services: Business,United States,Ba2
+OB0033,Halyard Pharma,Telecommunications,United States,B2
+OB0034,Vantage Solutions,Construction & Building,United States,B3
+OB0035,Titan Health,"Chemicals, Plastics & Rubber",United States,B2
+OB0036,Sable Logistics,Capital Equipment,United States,B2
+OB0037,Meridian Networks,Aerospace & Defense,United States,Ba1
+OB0038,Clarion Pharma,Aerospace & Defense,United States,Ba1
+OB0039,Cobalt Industries,Aerospace & Defense,United States,Ba2
+OB0040,Aegis Systems,Services: Business,United States,B1
+OB0041,Sable Media,"Chemicals, Plastics & Rubber",United States,Baa3
+OB0042,Cardinal Media,Aerospace & Defense,United States,B2
+OB0043,Cascade Partners,"Banking, Finance, Insurance",United States,B1
+OB0044,Titan Foods,Capital Equipment,United States,Ba2
+OB0045,Vertex Capital,Media: Broadcasting,United States,Ba3
+OB0046,Ironwood Health,"Chemicals, Plastics & Rubber",United States,Ba3
+OB0047,Titan Solutions,Construction & Building,United States,Ba2
+OB0048,Crestline Pharma,"Banking, Finance, Insurance",United States,B2
+OB0049,Ridgeline Holdings,Services: Business,Canada,B1
+OB0050,Pioneer Foods,"Beverage, Food & Tobacco",United States,B2
+OB0051,Pinnacle Industries,"Hotel, Gaming & Leisure",United States,B2
+OB0052,Beacon Energy,Consumer Goods: Durable,United States,Baa3
+OB0053,Concord Pharma,"Beverage, Food & Tobacco",United States,B1
+OB0054,Cascade Industries,High Tech Industries,United States,Ba2
+OB0055,Vertex Media,"Hotel, Gaming & Leisure",United States,B2
+OB0056,Cobalt Solutions,Services: Business,United States,B3
+OB0057,Aegis Networks,Automotive,United States,B2
+OB0058,Everest Group,Energy: Oil & Gas,United States,B2
+OB0059,Redwood Systems,Construction & Building,United States,Caa2
+OB0060,Granite Networks,Construction & Building,United States,B3
+OB0061,Monarch Brands,Capital Equipment,United States,Baa3
+OB0062,Cardinal Group,Healthcare & Pharmaceuticals,United States,B2
+OB0063,Vantage Health,Construction & Building,United States,B1
+OB0064,Pinnacle Group,Aerospace & Defense,United States,Ba3
+OB0065,Keystone Brands,Healthcare & Pharmaceuticals,United States,B2
+OB0066,Sterling Partners,Telecommunications,United States,Ba3
+OB0067,Atlas Materials,Consumer Goods: Durable,United States,Caa2
+OB0068,Granite Health,Construction & Building,United States,B1
+OB0069,Ridgeline Materials,High Tech Industries,United States,Ba3
+OB0070,Monarch Materials,"Hotel, Gaming & Leisure",United States,B2
+OB0071,Keystone Foods,Healthcare & Pharmaceuticals,United States,Caa1
+OB0072,Pinnacle Technologies,High Tech Industries,United States,B3
+OB0073,Vantage Technologies,Energy: Oil & Gas,United States,B1
+OB0074,Harbor Industries,Retail,United States,B1
+OB0075,Harbor Pharma,Energy: Oil & Gas,United Kingdom,Baa3
+OB0076,Atlas Networks,"Hotel, Gaming & Leisure",United Kingdom,B1
+OB0077,Pinnacle Foods,Healthcare & Pharmaceuticals,United States,B1
+OB0078,Concord Foods,Aerospace & Defense,United States,Caa1
+OB0079,Aegis Industries,"Beverage, Food & Tobacco",United States,B2
+OB0080,Harbor Brands,Aerospace & Defense,United States,B3
+OB0081,Cascade Capital,Media: Broadcasting,United States,Ba2
+OB0082,Halyard Materials,Retail,United States,B2
+OB0083,Sable Pharma,Media: Broadcasting,Canada,Ba3
+OB0084,Pinnacle Materials,"Hotel, Gaming & Leisure",United States,B1
+OB0085,Vertex Partners,Energy: Oil & Gas,United States,B1
+OB0086,Titan Devices,"Banking, Finance, Insurance",United States,B2
+OB0087,Cascade Materials,High Tech Industries,United States,Ba1
+OB0088,Redwood Pharma,"Chemicals, Plastics & Rubber",United States,Ba2
+OB0089,Sable Systems,Media: Broadcasting,United States,Ba3
+OB0090,Bluepeak Brands,Consumer Goods: Durable,United States,B1
+OB0091,Sequoia Brands,Telecommunications,United States,B3
+OB0092,Sequoia Solutions,Consumer Goods: Durable,United States,Ba1
+OB0093,Sterling Brands,"Chemicals, Plastics & Rubber",United States,B3
+OB0094,Everest Systems,Capital Equipment,United States,B3
+OB0095,Cascade Devices,"Beverage, Food & Tobacco",United States,Baa3
+OB0096,Pioneer Group,Consumer Goods: Durable,United States,B3
+OB0097,Cobalt Networks,Consumer Goods: Durable,United States,B1
+OB0098,Atlas Holdings,High Tech Industries,United States,B2
+OB0099,Crestline Foods,"Chemicals, Plastics & Rubber",United States,B2
+OB0100,Northwind Capital,Aerospace & Defense,United States,Caa1
+OB0101,Halyard Foods,Aerospace & Defense,United States,Caa1
+OB0102,Redwood Energy,High Tech Industries,United States,Ba3
+OB0103,Crestline Technologies,Capital Equipment,United States,B2
+OB0104,Halyard Energy,Energy: Oil & Gas,United States,B2
+OB0105,Crestline Solutions,"Beverage, Food & Tobacco",United States,Baa3
+OB0106,Ironwood Materials,"Beverage, Food & Tobacco",United States,B1
+OB0107,Crestline Group,Consumer Goods: Durable,United States,B1
+OB0108,Granite Pharma,Services: Business,United States,B1
+OB0109,Sequoia Technologies,"Chemicals, Plastics & Rubber",United States,B2
+OB0110,Vertex Health,Energy: Oil & Gas,United States,B3
+OB0111,Keystone Holdings,Automotive,United States,B1
+OB0112,Sterling Capital,Energy: Oil & Gas,United States,Baa3
+OB0113,Northwind Networks,Construction & Building,United States,Ba2
+OB0114,Sequoia Systems,Automotive,United States,B2
+OB0115,Cardinal Technologies,Healthcare & Pharmaceuticals,United States,B3
+OB0116,Clarion Holdings,Services: Business,United States,Ba3
+OB0117,Aegis Energy,"Hotel, Gaming & Leisure",United States,B2
+OB0118,Crestline Systems,Media: Broadcasting,United States,B2
+OB0119,Beacon Foods,Construction & Building,United States,B2
+OB0120,Summit Pharma,High Tech Industries,United Kingdom,B1
+OB0121,Halyard Industries,Healthcare & Pharmaceuticals,Canada,B1
+OB0122,Everest Technologies,Aerospace & Defense,United States,B3
+OB0123,Meridian Health,Capital Equipment,United States,B2
+OB0124,Pioneer Partners,"Hotel, Gaming & Leisure",Canada,Ba3
+OB0125,Cardinal Brands,Automotive,United States,Caa2
+OB0126,Cascade Group,Aerospace & Defense,United States,B1
+OB0127,Concord Industries,Retail,United States,B3
+OB0128,Harbor Group,Media: Broadcasting,United States,B2
+OB0129,Ridgeline Media,"Banking, Finance, Insurance",United States,B2
+OB0130,Monarch Energy,Telecommunications,United States,Baa3
+OB0131,Redwood Materials,"Beverage, Food & Tobacco",United States,Baa3
+OB0132,Clarion Materials,Media: Broadcasting,United States,Ba3
+OB0133,Ironwood Energy,Automotive,United States,B2
+OB0134,Pioneer Media,"Chemicals, Plastics & Rubber",United States,B1
+OB0135,Granite Materials,Construction & Building,United States,B2
+OB0136,Ironwood Foods,"Beverage, Food & Tobacco",United States,B1
+OB0137,Keystone Media,"Beverage, Food & Tobacco",United States,Ba1
+OB0138,Cobalt Brands,Aerospace & Defense,United States,B1
+OB0139,Sterling Logistics,"Beverage, Food & Tobacco",United States,B1
+OB0140,Titan Pharma,Media: Broadcasting,United States,B2
+OB0141,Beacon Brands,Construction & Building,United States,Baa3
+OB0142,Meridian Pharma,"Hotel, Gaming & Leisure",United States,Baa3
+OB0143,Northwind Materials,Consumer Goods: Durable,United Kingdom,B1
+OB0144,Sterling Networks,Retail,United States,Ba1
+OB0145,Keystone Pharma,Telecommunications,United States,Ba2
+OB0146,Vantage Brands,Telecommunications,United States,Baa3
+OB0147,Northwind Partners,Healthcare & Pharmaceuticals,United States,B2
+OB0148,Northwind Energy,Media: Broadcasting,United States,Ba2
+OB0149,Beacon Media,"Banking, Finance, Insurance",United States,B2
+OB0150,Northwind Group,High Tech Industries,United States,B2
+OB0151,Sterling Group,Aerospace & Defense,United States,B2
+OB0152,Everest Networks,Automotive,United States,B2
+OB0153,Sterling Foods,Consumer Goods: Durable,United States,Ba2
+OB0154,Everest Partners,"Chemicals, Plastics & Rubber",United States,B1
+OB0155,Sable Group,"Hotel, Gaming & Leisure",United States,B2
+OB0156,Summit Foods,Capital Equipment,United States,B2
+OB0157,Sterling Industries,Aerospace & Defense,United States,B1
+OB0158,Keystone Energy,Services: Business,United States,B1
+OB0159,Concord Health,Energy: Oil & Gas,United States,B1
+OB0160,Monarch Technologies,Construction & Building,United States,Ba2
+OB0161,Vertex Solutions,Consumer Goods: Durable,United States,B2
+OB0162,Crestline Partners,Capital Equipment,United States,Caa1
+OB0163,Sequoia Materials,"Beverage, Food & Tobacco",United States,B3
+OB0164,Vertex Foods,Media: Broadcasting,United States,Ba2
+OB0165,Sable Holdings,Construction & Building,United States,Baa3
+OB0166,Cardinal Materials,"Hotel, Gaming & Leisure",United Kingdom,B2
+OB0167,Monarch Media,Services: Business,United States,B2
+OB0168,Granite Systems,"Banking, Finance, Insurance",United States,B1
+OB0169,Titan Media,Consumer Goods: Durable,United States,B2
+OB0170,Ridgeline Pharma,High Tech Industries,United States,B1
+OB0171,Beacon Systems,"Banking, Finance, Insurance",United Kingdom,B2
+OB0172,Aegis Devices,Healthcare & Pharmaceuticals,United States,B2
+OB0173,Redwood Logistics,"Beverage, Food & Tobacco",United States,Ba2
+OB0174,Crestline Media,"Banking, Finance, Insurance",United States,B3
+OB0175,Keystone Solutions,Consumer Goods: Durable,United States,B2
+OB0176,Titan Group,Aerospace & Defense,United Kingdom,Ba3
+OB0177,Northwind Brands,Construction & Building,United States,B2
+OB0178,Atlas Capital,"Chemicals, Plastics & Rubber",Canada,B2
+OB0179,Bluepeak Technologies,Services: Business,United States,B2
+OB0180,Granite Devices,Construction & Building,United States,B1
+OB0181,Aegis Technologies,Capital Equipment,United States,B1
+OB0182,Cardinal Systems,"Chemicals, Plastics & Rubber",United Kingdom,B1
+OB0183,Clarion Capital,Aerospace & Defense,United States,B2
+OB0184,Vertex Systems,"Beverage, Food & Tobacco",United States,B2
+OB0185,Northwind Industries,Telecommunications,United States,B3
+OB0186,Granite Partners,Capital Equipment,United States,B2
+OB0187,Summit Technologies,Energy: Oil & Gas,United States,Ba3
+OB0188,Cobalt Media,Construction & Building,United States,Caa1
+OB0189,Sequoia Group,Media: Broadcasting,United States,B2
+OB0190,Aegis Pharma,High Tech Industries,United States,B1
+OB0191,Titan Partners,"Banking, Finance, Insurance",United States,Caa1
+OB0192,Sterling Holdings,High Tech Industries,United States,Ba2
+OB0193,Harbor Foods,Telecommunications,United States,B2
+OB0194,Clarion Solutions,"Hotel, Gaming & Leisure",United States,B3
+OB0195,Aegis Capital,Aerospace & Defense,United States,B3
+OB0196,Crestline Materials,Capital Equipment,United States,Ba1
+OB0197,Pinnacle Brands,"Hotel, Gaming & Leisure",United States,B1
+OB0198,Clarion Brands,Energy: Oil & Gas,United States,B2
+OB0199,Aegis Media,"Banking, Finance, Insurance",United States,B2
+OB0200,Summit Capital,Construction & Building,United States,B3
+OB0201,Ridgeline Brands,Aerospace & Defense,United States,B1
+OB0202,Sable Technologies,"Banking, Finance, Insurance",United States,B3
+OB0203,Vertex Brands,Capital Equipment,United States,B2
+OB0204,Granite Foods,"Hotel, Gaming & Leisure",United States,B2
+OB0205,Pinnacle Logistics,Construction & Building,United States,B1
+OB0206,Concord Brands,Media: Broadcasting,United States,B2
+OB0207,Cobalt Technologies,Aerospace & Defense,United States,Baa3
+OB0208,Sable Capital,Retail,United States,B2
+OB0209,Summit Materials,"Banking, Finance, Insurance",United States,B3
+OB0210,Northwind Holdings,Media: Broadcasting,United States,B1
+OB0211,Monarch Group,Capital Equipment,United States,B1
+OB0212,Monarch Foods,"Banking, Finance, Insurance",United States,Ba2
+OB0213,Sterling Media,"Banking, Finance, Insurance",United States,B2
+OB0214,Crestline Logistics,Energy: Oil & Gas,United States,Baa3
+OB0215,Atlas Foods,"Banking, Finance, Insurance",United States,B3
+OB0216,Titan Materials,High Tech Industries,United States,B1
+OB0217,Crestline Energy,Aerospace & Defense,United States,Ba3
+OB0218,Vantage Logistics,High Tech Industries,United States,B1
+OB0219,Meridian Energy,Services: Business,United States,B3
+OB0220,Monarch Holdings,High Tech Industries,United States,B1
+OB0221,Atlas Health,Services: Business,United States,B2
+OB0222,Cascade Health,Aerospace & Defense,United States,Ba3
+OB0223,Concord Holdings,Construction & Building,United States,Ba3
+OB0224,Atlas Pharma,Construction & Building,United States,Ba3
+OB0225,Harbor Networks,Media: Broadcasting,United States,B1
+OB0226,Vertex Technologies,Energy: Oil & Gas,United States,Baa3
+OB0227,Redwood Partners,Capital Equipment,United States,B3
+OB0228,Vertex Devices,Consumer Goods: Durable,United States,Ba2
+OB0229,Cobalt Group,Media: Broadcasting,United States,Ba2
+OB0230,Everest Pharma,Media: Broadcasting,United States,B3
+OB0231,Redwood Brands,Capital Equipment,United States,B2
+OB0232,Meridian Partners,"Chemicals, Plastics & Rubber",United States,B1
+OB0233,Titan Systems,Capital Equipment,United States,Baa3
+OB0234,Meridian Systems,Energy: Oil & Gas,United States,B1
+OB0235,Harbor Technologies,"Beverage, Food & Tobacco",United States,Ba3
+OB0236,Meridian Logistics,Telecommunications,United States,B3
+OB0237,Vantage Pharma,Media: Broadcasting,United States,B2
+OB0238,Harbor Partners,"Chemicals, Plastics & Rubber",United States,B2
+OB0239,Ironwood Partners,Retail,United States,B2
+OB0240,Meridian Materials,Aerospace & Defense,United States,B2
+OB0241,Summit Solutions,Construction & Building,United States,B1
+OB0242,Harbor Holdings,"Hotel, Gaming & Leisure",United States,B2
+OB0243,Bluepeak Holdings,Services: Business,United States,B1
+OB0244,Sequoia Foods,Capital Equipment,United States,B2
+OB0245,Sterling Systems,Services: Business,United States,Ba3
+OB0246,Pioneer Industries,Services: Business,United States,B3
+OB0247,Everest Energy,Energy: Oil & Gas,United States,Baa3
+OB0248,Vertex Networks,Automotive,United Kingdom,Ba2
+OB0249,Summit Health,Consumer Goods: Durable,Canada,Ba3
+OB0250,Meridian Holdings,"Beverage, Food & Tobacco",United States,B1
+OB0251,Cobalt Capital,High Tech Industries,United States,B2
+OB0252,Clarion Foods,Automotive,United States,B2
+OB0253,Sequoia Holdings,Media: Broadcasting,United States,B3
+OB0254,Redwood Group,Automotive,United States,Baa3
+OB0255,Granite Solutions,Services: Business,United States,Ba3
+OB0256,Redwood Devices,"Chemicals, Plastics & Rubber",United States,B1
+OB0257,Cascade Solutions,Telecommunications,United States,B3
+OB0258,Halyard Media,Capital Equipment,United States,B3
+OB0259,Atlas Energy,Services: Business,United States,B3
+OB0260,Sterling Materials,High Tech Industries,United States,Ba2
+OB0261,Sterling Energy,Capital Equipment,United States,B2
+OB0262,Everest Devices,Automotive,United States,B2
+OB0263,Crestline Health,Media: Broadcasting,United States,B2
+OB0264,Atlas Industries,Capital Equipment,United States,B1
+OB0265,Keystone Group,"Hotel, Gaming & Leisure",United States,Caa1
+OB0266,Everest Solutions,Retail,United States,B1
+OB0267,Halyard Systems,High Tech Industries,United States,B3
+OB0268,Granite Group,Media: Broadcasting,United States,B3
+OB0269,Clarion Technologies,Retail,United States,B3
+OB0270,Keystone Capital,Telecommunications,United States,Ba3
+OB0271,Sterling Pharma,Automotive,United States,B1
+OB0272,Ridgeline Technologies,Services: Business,United States,B2
+OB0273,Summit Logistics,Consumer Goods: Durable,United States,B1
+OB0274,Granite Media,"Chemicals, Plastics & Rubber",United States,Ba3
+OB0275,Atlas Group,Consumer Goods: Durable,United States,Ba3
+OB0276,Ridgeline Devices,High Tech Industries,United States,B3
+OB0277,Pioneer Solutions,Capital Equipment,United States,B2
+OB0278,Crestline Brands,Capital Equipment,United States,B1
+OB0279,Pinnacle Health,Retail,United States,B2
+OB0280,Halyard Brands,Automotive,United States,B2
+OB0281,Pioneer Health,Telecommunications,United States,Ba2
+OB0282,Aegis Logistics,"Banking, Finance, Insurance",United States,B2
+OB0283,Halyard Solutions,Construction & Building,United States,B2
+OB0284,Ridgeline Energy,Retail,Canada,B2
+OB0285,Ironwood Capital,Services: Business,United States,Ba2
+OB0286,Ridgeline Systems,Telecommunications,United States,B1
+OB0287,Keystone Technologies,"Beverage, Food & Tobacco",United States,Ba1
+OB0288,Cascade Technologies,Energy: Oil & Gas,United States,B1
+OB0289,Ironwood Brands,"Banking, Finance, Insurance",United States,B2
+OB0290,Cobalt Partners,"Beverage, Food & Tobacco",United States,Ba1
+OB0291,Monarch Devices,Aerospace & Defense,United States,B1
+OB0292,Titan Holdings,Retail,United States,B2
+OB0293,Cobalt Devices,Healthcare & Pharmaceuticals,United States,B2
+OB0294,Harbor Materials,Healthcare & Pharmaceuticals,United States,Ba2
+OB0295,Bluepeak Partners,Media: Broadcasting,United States,B1
+OB0296,Vantage Systems,"Hotel, Gaming & Leisure",United States,B3
+OB0297,Monarch Solutions,Telecommunications,United States,B2
+OB0298,Granite Brands,Automotive,United Kingdom,B2
+OB0299,Beacon Partners,Retail,United States,B2
+OB0300,Bluepeak Energy,Automotive,United States,B1

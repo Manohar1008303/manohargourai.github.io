@@ -1,0 +1,5 @@
+deal_id,deal_name,manager,deal_type,trustee,currency,closing_date,reinvestment_end,stated_maturity,target_par
+CLO-GOLB-241,Golub Capital Partners CLO 2024-1,Golub Capital,Middle Market,BNY,USD,2024-05-16,2028-07-20,2036-07-20,650000000
+CLO-CARL-231,Carlyle US CLO 2023-1,Carlyle,Broadly Syndicated,BNY,USD,2023-04-18,2028-04-15,2036-04-15,500000000
+CLO-ARES-222,Ares Middle Market CLO 2022-2,ARES,Middle Market,BNY,USD,2022-09-27,2026-10-20,2034-10-20,400000000
+CLO-BAIN-241,Bain Capital US CLO 2024-1,Bain Capital,Broadly Syndicated,BNY,USD,2024-02-08,2029-01-20,2037-01-20,450000000

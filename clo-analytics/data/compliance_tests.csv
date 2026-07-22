@@ -1,0 +1,241 @@
+test_id,deal_id,period,test_category,test_name,threshold_value,actual_value,threshold_type,result
+1,CLO-GOLB-241,2024-Q4,Coverage,Class C OC Test,119.5,127.6252,min,PASS
+2,CLO-GOLB-241,2024-Q4,Coverage,Class C IC Test,115.0,189.598,min,PASS
+3,CLO-GOLB-241,2024-Q4,Coverage,Class D OC Test,112.8,119.2688,min,PASS
+4,CLO-GOLB-241,2024-Q4,Coverage,Class D IC Test,110.0,174.6619,min,PASS
+5,CLO-GOLB-241,2024-Q4,Coverage,Class E OC Test,107.2,113.2043,min,PASS
+6,CLO-GOLB-241,2024-Q4,Coverage,Class E IC Test,105.0,160.5682,min,PASS
+7,CLO-GOLB-241,2024-Q4,Coverage,Class F OC Test,104.5,110.7025,min,PASS
+8,CLO-GOLB-241,2024-Q4,Coverage,Class F IC Test,102.5,153.9413,min,PASS
+9,CLO-GOLB-241,2024-Q4,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2358.8484,max,PASS
+10,CLO-GOLB-241,2024-Q4,Collateral Quality,Weighted Avg Spread (WAS),340.0,493.075,min,PASS
+11,CLO-GOLB-241,2024-Q4,Concentration,Largest Obligor,2.0,0.682,max,PASS
+12,CLO-GOLB-241,2024-Q4,Concentration,Largest Moody's Industry,12.0,8.7942,max,PASS
+13,CLO-GOLB-241,2024-Q4,Concentration,Caa/CCC Bucket,7.5,4.1816,max,PASS
+14,CLO-GOLB-241,2024-Q4,Concentration,Defaulted Obligations,2.0,0.5391,max,PASS
+15,CLO-GOLB-241,2024-Q4,Concentration,Second Lien Loans,5.0,5.0684,max,FAIL
+16,CLO-GOLB-241,2025-Q1,Coverage,Class C OC Test,119.5,127.1147,min,PASS
+17,CLO-GOLB-241,2025-Q1,Coverage,Class C IC Test,115.0,189.598,min,PASS
+18,CLO-GOLB-241,2025-Q1,Coverage,Class D OC Test,112.8,118.7917,min,PASS
+19,CLO-GOLB-241,2025-Q1,Coverage,Class D IC Test,110.0,174.6619,min,PASS
+20,CLO-GOLB-241,2025-Q1,Coverage,Class E OC Test,107.2,112.7515,min,PASS
+21,CLO-GOLB-241,2025-Q1,Coverage,Class E IC Test,105.0,160.5682,min,PASS
+22,CLO-GOLB-241,2025-Q1,Coverage,Class F OC Test,104.5,110.2597,min,PASS
+23,CLO-GOLB-241,2025-Q1,Coverage,Class F IC Test,102.5,153.9413,min,PASS
+24,CLO-GOLB-241,2025-Q1,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2349.413,max,PASS
+25,CLO-GOLB-241,2025-Q1,Collateral Quality,Weighted Avg Spread (WAS),340.0,493.075,min,PASS
+26,CLO-GOLB-241,2025-Q1,Concentration,Largest Obligor,2.0,0.682,max,PASS
+27,CLO-GOLB-241,2025-Q1,Concentration,Largest Moody's Industry,12.0,8.7942,max,PASS
+28,CLO-GOLB-241,2025-Q1,Concentration,Caa/CCC Bucket,7.5,4.3071,max,PASS
+29,CLO-GOLB-241,2025-Q1,Concentration,Defaulted Obligations,2.0,0.566,max,PASS
+30,CLO-GOLB-241,2025-Q1,Concentration,Second Lien Loans,5.0,5.0684,max,FAIL
+31,CLO-GOLB-241,2025-Q2,Coverage,Class C OC Test,119.5,126.6042,min,PASS
+32,CLO-GOLB-241,2025-Q2,Coverage,Class C IC Test,115.0,189.598,min,PASS
+33,CLO-GOLB-241,2025-Q2,Coverage,Class D OC Test,112.8,118.3147,min,PASS
+34,CLO-GOLB-241,2025-Q2,Coverage,Class D IC Test,110.0,174.6619,min,PASS
+35,CLO-GOLB-241,2025-Q2,Coverage,Class E OC Test,107.2,112.2987,min,PASS
+36,CLO-GOLB-241,2025-Q2,Coverage,Class E IC Test,105.0,160.5682,min,PASS
+37,CLO-GOLB-241,2025-Q2,Coverage,Class F OC Test,104.5,109.8169,min,PASS
+38,CLO-GOLB-241,2025-Q2,Coverage,Class F IC Test,102.5,153.9413,min,PASS
+39,CLO-GOLB-241,2025-Q2,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2339.9776,max,PASS
+40,CLO-GOLB-241,2025-Q2,Collateral Quality,Weighted Avg Spread (WAS),340.0,493.075,min,PASS
+41,CLO-GOLB-241,2025-Q2,Concentration,Largest Obligor,2.0,0.682,max,PASS
+42,CLO-GOLB-241,2025-Q2,Concentration,Largest Moody's Industry,12.0,8.7942,max,PASS
+43,CLO-GOLB-241,2025-Q2,Concentration,Caa/CCC Bucket,7.5,4.4325,max,PASS
+44,CLO-GOLB-241,2025-Q2,Concentration,Defaulted Obligations,2.0,0.593,max,PASS
+45,CLO-GOLB-241,2025-Q2,Concentration,Second Lien Loans,5.0,5.0684,max,FAIL
+46,CLO-GOLB-241,2025-Q3,Coverage,Class C OC Test,119.5,126.0937,min,PASS
+47,CLO-GOLB-241,2025-Q3,Coverage,Class C IC Test,115.0,189.598,min,PASS
+48,CLO-GOLB-241,2025-Q3,Coverage,Class D OC Test,112.8,117.8376,min,PASS
+49,CLO-GOLB-241,2025-Q3,Coverage,Class D IC Test,110.0,174.6619,min,PASS
+50,CLO-GOLB-241,2025-Q3,Coverage,Class E OC Test,107.2,111.8458,min,PASS
+51,CLO-GOLB-241,2025-Q3,Coverage,Class E IC Test,105.0,160.5682,min,PASS
+52,CLO-GOLB-241,2025-Q3,Coverage,Class F OC Test,104.5,109.3741,min,PASS
+53,CLO-GOLB-241,2025-Q3,Coverage,Class F IC Test,102.5,153.9413,min,PASS
+54,CLO-GOLB-241,2025-Q3,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2330.5422,max,PASS
+55,CLO-GOLB-241,2025-Q3,Collateral Quality,Weighted Avg Spread (WAS),340.0,493.075,min,PASS
+56,CLO-GOLB-241,2025-Q3,Concentration,Largest Obligor,2.0,0.682,max,PASS
+57,CLO-GOLB-241,2025-Q3,Concentration,Largest Moody's Industry,12.0,8.7942,max,PASS
+58,CLO-GOLB-241,2025-Q3,Concentration,Caa/CCC Bucket,7.5,4.558,max,PASS
+59,CLO-GOLB-241,2025-Q3,Concentration,Defaulted Obligations,2.0,0.62,max,PASS
+60,CLO-GOLB-241,2025-Q3,Concentration,Second Lien Loans,5.0,5.0684,max,FAIL
+61,CLO-CARL-231,2024-Q4,Coverage,Class C OC Test,119.5,127.8565,min,PASS
+62,CLO-CARL-231,2024-Q4,Coverage,Class C IC Test,115.0,190.2666,min,PASS
+63,CLO-CARL-231,2024-Q4,Coverage,Class D OC Test,112.8,119.4849,min,PASS
+64,CLO-CARL-231,2024-Q4,Coverage,Class D IC Test,110.0,175.2778,min,PASS
+65,CLO-CARL-231,2024-Q4,Coverage,Class E OC Test,107.2,113.4094,min,PASS
+66,CLO-CARL-231,2024-Q4,Coverage,Class E IC Test,105.0,161.1343,min,PASS
+67,CLO-CARL-231,2024-Q4,Coverage,Class F OC Test,104.5,110.9031,min,PASS
+68,CLO-CARL-231,2024-Q4,Coverage,Class F IC Test,102.5,154.4841,min,PASS
+69,CLO-CARL-231,2024-Q4,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2397.1048,max,PASS
+70,CLO-CARL-231,2024-Q4,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.8306,min,PASS
+71,CLO-CARL-231,2024-Q4,Concentration,Largest Obligor,2.0,0.8397,max,PASS
+72,CLO-CARL-231,2024-Q4,Concentration,Largest Moody's Industry,12.0,10.5747,max,PASS
+73,CLO-CARL-231,2024-Q4,Concentration,Caa/CCC Bucket,7.5,4.0958,max,PASS
+74,CLO-CARL-231,2024-Q4,Concentration,Defaulted Obligations,2.0,0.406,max,PASS
+75,CLO-CARL-231,2024-Q4,Concentration,Second Lien Loans,5.0,4.2811,max,PASS
+76,CLO-CARL-231,2025-Q1,Coverage,Class C OC Test,119.5,127.3451,min,PASS
+77,CLO-CARL-231,2025-Q1,Coverage,Class C IC Test,115.0,190.2666,min,PASS
+78,CLO-CARL-231,2025-Q1,Coverage,Class D OC Test,112.8,119.007,min,PASS
+79,CLO-CARL-231,2025-Q1,Coverage,Class D IC Test,110.0,175.2778,min,PASS
+80,CLO-CARL-231,2025-Q1,Coverage,Class E OC Test,107.2,112.9558,min,PASS
+81,CLO-CARL-231,2025-Q1,Coverage,Class E IC Test,105.0,161.1343,min,PASS
+82,CLO-CARL-231,2025-Q1,Coverage,Class F OC Test,104.5,110.4595,min,PASS
+83,CLO-CARL-231,2025-Q1,Coverage,Class F IC Test,102.5,154.4841,min,PASS
+84,CLO-CARL-231,2025-Q1,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2387.5164,max,PASS
+85,CLO-CARL-231,2025-Q1,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.8306,min,PASS
+86,CLO-CARL-231,2025-Q1,Concentration,Largest Obligor,2.0,0.8397,max,PASS
+87,CLO-CARL-231,2025-Q1,Concentration,Largest Moody's Industry,12.0,10.5747,max,PASS
+88,CLO-CARL-231,2025-Q1,Concentration,Caa/CCC Bucket,7.5,4.2187,max,PASS
+89,CLO-CARL-231,2025-Q1,Concentration,Defaulted Obligations,2.0,0.4263,max,PASS
+90,CLO-CARL-231,2025-Q1,Concentration,Second Lien Loans,5.0,4.2811,max,PASS
+91,CLO-CARL-231,2025-Q2,Coverage,Class C OC Test,119.5,126.8336,min,PASS
+92,CLO-CARL-231,2025-Q2,Coverage,Class C IC Test,115.0,190.2666,min,PASS
+93,CLO-CARL-231,2025-Q2,Coverage,Class D OC Test,112.8,118.5291,min,PASS
+94,CLO-CARL-231,2025-Q2,Coverage,Class D IC Test,110.0,175.2778,min,PASS
+95,CLO-CARL-231,2025-Q2,Coverage,Class E OC Test,107.2,112.5022,min,PASS
+96,CLO-CARL-231,2025-Q2,Coverage,Class E IC Test,105.0,161.1343,min,PASS
+97,CLO-CARL-231,2025-Q2,Coverage,Class F OC Test,104.5,110.0159,min,PASS
+98,CLO-CARL-231,2025-Q2,Coverage,Class F IC Test,102.5,154.4841,min,PASS
+99,CLO-CARL-231,2025-Q2,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2377.9279,max,PASS
+100,CLO-CARL-231,2025-Q2,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.8306,min,PASS
+101,CLO-CARL-231,2025-Q2,Concentration,Largest Obligor,2.0,0.8397,max,PASS
+102,CLO-CARL-231,2025-Q2,Concentration,Largest Moody's Industry,12.0,10.5747,max,PASS
+103,CLO-CARL-231,2025-Q2,Concentration,Caa/CCC Bucket,7.5,4.3416,max,PASS
+104,CLO-CARL-231,2025-Q2,Concentration,Defaulted Obligations,2.0,0.4466,max,PASS
+105,CLO-CARL-231,2025-Q2,Concentration,Second Lien Loans,5.0,4.2811,max,PASS
+106,CLO-CARL-231,2025-Q3,Coverage,Class C OC Test,119.5,126.3222,min,PASS
+107,CLO-CARL-231,2025-Q3,Coverage,Class C IC Test,115.0,190.2666,min,PASS
+108,CLO-CARL-231,2025-Q3,Coverage,Class D OC Test,112.8,118.0511,min,PASS
+109,CLO-CARL-231,2025-Q3,Coverage,Class D IC Test,110.0,175.2778,min,PASS
+110,CLO-CARL-231,2025-Q3,Coverage,Class E OC Test,107.2,112.0485,min,PASS
+111,CLO-CARL-231,2025-Q3,Coverage,Class E IC Test,105.0,161.1343,min,PASS
+112,CLO-CARL-231,2025-Q3,Coverage,Class F OC Test,104.5,109.5723,min,PASS
+113,CLO-CARL-231,2025-Q3,Coverage,Class F IC Test,102.5,154.4841,min,PASS
+114,CLO-CARL-231,2025-Q3,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2368.3395,max,PASS
+115,CLO-CARL-231,2025-Q3,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.8306,min,PASS
+116,CLO-CARL-231,2025-Q3,Concentration,Largest Obligor,2.0,0.8397,max,PASS
+117,CLO-CARL-231,2025-Q3,Concentration,Largest Moody's Industry,12.0,10.5747,max,PASS
+118,CLO-CARL-231,2025-Q3,Concentration,Caa/CCC Bucket,7.5,4.4645,max,PASS
+119,CLO-CARL-231,2025-Q3,Concentration,Defaulted Obligations,2.0,0.4669,max,PASS
+120,CLO-CARL-231,2025-Q3,Concentration,Second Lien Loans,5.0,4.2811,max,PASS
+121,CLO-ARES-222,2024-Q4,Coverage,Class C OC Test,119.5,127.0662,min,PASS
+122,CLO-ARES-222,2024-Q4,Coverage,Class C IC Test,115.0,188.9648,min,PASS
+123,CLO-ARES-222,2024-Q4,Coverage,Class D OC Test,112.8,118.7464,min,PASS
+124,CLO-ARES-222,2024-Q4,Coverage,Class D IC Test,110.0,174.0786,min,PASS
+125,CLO-ARES-222,2024-Q4,Coverage,Class E OC Test,107.2,112.7084,min,PASS
+126,CLO-ARES-222,2024-Q4,Coverage,Class E IC Test,105.0,160.0319,min,PASS
+127,CLO-ARES-222,2024-Q4,Coverage,Class F OC Test,104.5,110.2176,min,PASS
+128,CLO-ARES-222,2024-Q4,Coverage,Class F IC Test,102.5,153.4272,min,PASS
+129,CLO-ARES-222,2024-Q4,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2438.4698,max,PASS
+130,CLO-ARES-222,2024-Q4,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.1472,min,PASS
+131,CLO-ARES-222,2024-Q4,Concentration,Largest Obligor,2.0,0.94,max,PASS
+132,CLO-ARES-222,2024-Q4,Concentration,Largest Moody's Industry,12.0,10.8247,max,PASS
+133,CLO-ARES-222,2024-Q4,Concentration,Caa/CCC Bucket,7.5,4.1608,max,PASS
+134,CLO-ARES-222,2024-Q4,Concentration,Defaulted Obligations,2.0,1.772,max,PASS
+135,CLO-ARES-222,2024-Q4,Concentration,Second Lien Loans,5.0,4.0606,max,PASS
+136,CLO-ARES-222,2025-Q1,Coverage,Class C OC Test,119.5,126.5579,min,PASS
+137,CLO-ARES-222,2025-Q1,Coverage,Class C IC Test,115.0,188.9648,min,PASS
+138,CLO-ARES-222,2025-Q1,Coverage,Class D OC Test,112.8,118.2714,min,PASS
+139,CLO-ARES-222,2025-Q1,Coverage,Class D IC Test,110.0,174.0786,min,PASS
+140,CLO-ARES-222,2025-Q1,Coverage,Class E OC Test,107.2,112.2576,min,PASS
+141,CLO-ARES-222,2025-Q1,Coverage,Class E IC Test,105.0,160.0319,min,PASS
+142,CLO-ARES-222,2025-Q1,Coverage,Class F OC Test,104.5,109.7768,min,PASS
+143,CLO-ARES-222,2025-Q1,Coverage,Class F IC Test,102.5,153.4272,min,PASS
+144,CLO-ARES-222,2025-Q1,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2428.7159,max,PASS
+145,CLO-ARES-222,2025-Q1,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.1472,min,PASS
+146,CLO-ARES-222,2025-Q1,Concentration,Largest Obligor,2.0,0.94,max,PASS
+147,CLO-ARES-222,2025-Q1,Concentration,Largest Moody's Industry,12.0,10.8247,max,PASS
+148,CLO-ARES-222,2025-Q1,Concentration,Caa/CCC Bucket,7.5,4.2857,max,PASS
+149,CLO-ARES-222,2025-Q1,Concentration,Defaulted Obligations,2.0,1.8606,max,PASS
+150,CLO-ARES-222,2025-Q1,Concentration,Second Lien Loans,5.0,4.0606,max,PASS
+151,CLO-ARES-222,2025-Q2,Coverage,Class C OC Test,119.5,126.0497,min,PASS
+152,CLO-ARES-222,2025-Q2,Coverage,Class C IC Test,115.0,188.9648,min,PASS
+153,CLO-ARES-222,2025-Q2,Coverage,Class D OC Test,112.8,117.7964,min,PASS
+154,CLO-ARES-222,2025-Q2,Coverage,Class D IC Test,110.0,174.0786,min,PASS
+155,CLO-ARES-222,2025-Q2,Coverage,Class E OC Test,107.2,111.8068,min,PASS
+156,CLO-ARES-222,2025-Q2,Coverage,Class E IC Test,105.0,160.0319,min,PASS
+157,CLO-ARES-222,2025-Q2,Coverage,Class F OC Test,104.5,109.3359,min,PASS
+158,CLO-ARES-222,2025-Q2,Coverage,Class F IC Test,102.5,153.4272,min,PASS
+159,CLO-ARES-222,2025-Q2,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2418.962,max,PASS
+160,CLO-ARES-222,2025-Q2,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.1472,min,PASS
+161,CLO-ARES-222,2025-Q2,Concentration,Largest Obligor,2.0,0.94,max,PASS
+162,CLO-ARES-222,2025-Q2,Concentration,Largest Moody's Industry,12.0,10.8247,max,PASS
+163,CLO-ARES-222,2025-Q2,Concentration,Caa/CCC Bucket,7.5,4.4105,max,PASS
+164,CLO-ARES-222,2025-Q2,Concentration,Defaulted Obligations,2.0,1.9492,max,PASS
+165,CLO-ARES-222,2025-Q2,Concentration,Second Lien Loans,5.0,4.0606,max,PASS
+166,CLO-ARES-222,2025-Q3,Coverage,Class C OC Test,119.5,125.5414,min,PASS
+167,CLO-ARES-222,2025-Q3,Coverage,Class C IC Test,115.0,188.9648,min,PASS
+168,CLO-ARES-222,2025-Q3,Coverage,Class D OC Test,112.8,117.3214,min,PASS
+169,CLO-ARES-222,2025-Q3,Coverage,Class D IC Test,110.0,174.0786,min,PASS
+170,CLO-ARES-222,2025-Q3,Coverage,Class E OC Test,107.2,111.3559,min,PASS
+171,CLO-ARES-222,2025-Q3,Coverage,Class E IC Test,105.0,160.0319,min,PASS
+172,CLO-ARES-222,2025-Q3,Coverage,Class F OC Test,104.5,108.895,min,PASS
+173,CLO-ARES-222,2025-Q3,Coverage,Class F IC Test,102.5,153.4272,min,PASS
+174,CLO-ARES-222,2025-Q3,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2409.2081,max,PASS
+175,CLO-ARES-222,2025-Q3,Collateral Quality,Weighted Avg Spread (WAS),340.0,494.1472,min,PASS
+176,CLO-ARES-222,2025-Q3,Concentration,Largest Obligor,2.0,0.94,max,PASS
+177,CLO-ARES-222,2025-Q3,Concentration,Largest Moody's Industry,12.0,10.8247,max,PASS
+178,CLO-ARES-222,2025-Q3,Concentration,Caa/CCC Bucket,7.5,4.5353,max,PASS
+179,CLO-ARES-222,2025-Q3,Concentration,Defaulted Obligations,2.0,2.0378,max,FAIL
+180,CLO-ARES-222,2025-Q3,Concentration,Second Lien Loans,5.0,4.0606,max,PASS
+181,CLO-BAIN-241,2024-Q4,Coverage,Class C OC Test,119.5,127.2308,min,PASS
+182,CLO-BAIN-241,2024-Q4,Coverage,Class C IC Test,115.0,190.5694,min,PASS
+183,CLO-BAIN-241,2024-Q4,Coverage,Class D OC Test,112.8,118.9002,min,PASS
+184,CLO-BAIN-241,2024-Q4,Coverage,Class D IC Test,110.0,175.5567,min,PASS
+185,CLO-BAIN-241,2024-Q4,Coverage,Class E OC Test,107.2,112.8544,min,PASS
+186,CLO-BAIN-241,2024-Q4,Coverage,Class E IC Test,105.0,161.3908,min,PASS
+187,CLO-BAIN-241,2024-Q4,Coverage,Class F OC Test,104.5,110.3604,min,PASS
+188,CLO-BAIN-241,2024-Q4,Coverage,Class F IC Test,102.5,154.73,min,PASS
+189,CLO-BAIN-241,2024-Q4,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2442.2989,max,PASS
+190,CLO-BAIN-241,2024-Q4,Collateral Quality,Weighted Avg Spread (WAS),340.0,501.5292,min,PASS
+191,CLO-BAIN-241,2024-Q4,Concentration,Largest Obligor,2.0,0.8743,max,PASS
+192,CLO-BAIN-241,2024-Q4,Concentration,Largest Moody's Industry,12.0,9.0189,max,PASS
+193,CLO-BAIN-241,2024-Q4,Concentration,Caa/CCC Bucket,7.5,3.7443,max,PASS
+194,CLO-BAIN-241,2024-Q4,Concentration,Defaulted Obligations,2.0,1.2921,max,PASS
+195,CLO-BAIN-241,2024-Q4,Concentration,Second Lien Loans,5.0,5.1825,max,FAIL
+196,CLO-BAIN-241,2025-Q1,Coverage,Class C OC Test,119.5,126.7219,min,PASS
+197,CLO-BAIN-241,2025-Q1,Coverage,Class C IC Test,115.0,190.5694,min,PASS
+198,CLO-BAIN-241,2025-Q1,Coverage,Class D OC Test,112.8,118.4246,min,PASS
+199,CLO-BAIN-241,2025-Q1,Coverage,Class D IC Test,110.0,175.5567,min,PASS
+200,CLO-BAIN-241,2025-Q1,Coverage,Class E OC Test,107.2,112.403,min,PASS
+201,CLO-BAIN-241,2025-Q1,Coverage,Class E IC Test,105.0,161.3908,min,PASS
+202,CLO-BAIN-241,2025-Q1,Coverage,Class F OC Test,104.5,109.919,min,PASS
+203,CLO-BAIN-241,2025-Q1,Coverage,Class F IC Test,102.5,154.73,min,PASS
+204,CLO-BAIN-241,2025-Q1,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2432.5297,max,PASS
+205,CLO-BAIN-241,2025-Q1,Collateral Quality,Weighted Avg Spread (WAS),340.0,501.5292,min,PASS
+206,CLO-BAIN-241,2025-Q1,Concentration,Largest Obligor,2.0,0.8743,max,PASS
+207,CLO-BAIN-241,2025-Q1,Concentration,Largest Moody's Industry,12.0,9.0189,max,PASS
+208,CLO-BAIN-241,2025-Q1,Concentration,Caa/CCC Bucket,7.5,3.8566,max,PASS
+209,CLO-BAIN-241,2025-Q1,Concentration,Defaulted Obligations,2.0,1.3567,max,PASS
+210,CLO-BAIN-241,2025-Q1,Concentration,Second Lien Loans,5.0,5.1825,max,FAIL
+211,CLO-BAIN-241,2025-Q2,Coverage,Class C OC Test,119.5,126.2129,min,PASS
+212,CLO-BAIN-241,2025-Q2,Coverage,Class C IC Test,115.0,190.5694,min,PASS
+213,CLO-BAIN-241,2025-Q2,Coverage,Class D OC Test,112.8,117.949,min,PASS
+214,CLO-BAIN-241,2025-Q2,Coverage,Class D IC Test,110.0,175.5567,min,PASS
+215,CLO-BAIN-241,2025-Q2,Coverage,Class E OC Test,107.2,111.9516,min,PASS
+216,CLO-BAIN-241,2025-Q2,Coverage,Class E IC Test,105.0,161.3908,min,PASS
+217,CLO-BAIN-241,2025-Q2,Coverage,Class F OC Test,104.5,109.4775,min,PASS
+218,CLO-BAIN-241,2025-Q2,Coverage,Class F IC Test,102.5,154.73,min,PASS
+219,CLO-BAIN-241,2025-Q2,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2422.7605,max,PASS
+220,CLO-BAIN-241,2025-Q2,Collateral Quality,Weighted Avg Spread (WAS),340.0,501.5292,min,PASS
+221,CLO-BAIN-241,2025-Q2,Concentration,Largest Obligor,2.0,0.8743,max,PASS
+222,CLO-BAIN-241,2025-Q2,Concentration,Largest Moody's Industry,12.0,9.0189,max,PASS
+223,CLO-BAIN-241,2025-Q2,Concentration,Caa/CCC Bucket,7.5,3.969,max,PASS
+224,CLO-BAIN-241,2025-Q2,Concentration,Defaulted Obligations,2.0,1.4213,max,PASS
+225,CLO-BAIN-241,2025-Q2,Concentration,Second Lien Loans,5.0,5.1825,max,FAIL
+226,CLO-BAIN-241,2025-Q3,Coverage,Class C OC Test,119.5,125.704,min,PASS
+227,CLO-BAIN-241,2025-Q3,Coverage,Class C IC Test,115.0,190.5694,min,PASS
+228,CLO-BAIN-241,2025-Q3,Coverage,Class D OC Test,112.8,117.4734,min,PASS
+229,CLO-BAIN-241,2025-Q3,Coverage,Class D IC Test,110.0,175.5567,min,PASS
+230,CLO-BAIN-241,2025-Q3,Coverage,Class E OC Test,107.2,111.5002,min,PASS
+231,CLO-BAIN-241,2025-Q3,Coverage,Class E IC Test,105.0,161.3908,min,PASS
+232,CLO-BAIN-241,2025-Q3,Coverage,Class F OC Test,104.5,109.0361,min,PASS
+233,CLO-BAIN-241,2025-Q3,Coverage,Class F IC Test,102.5,154.73,min,PASS
+234,CLO-BAIN-241,2025-Q3,Collateral Quality,Weighted Avg Rating Factor (WARF),2900.0,2412.9913,max,PASS
+235,CLO-BAIN-241,2025-Q3,Collateral Quality,Weighted Avg Spread (WAS),340.0,501.5292,min,PASS
+236,CLO-BAIN-241,2025-Q3,Concentration,Largest Obligor,2.0,0.8743,max,PASS
+237,CLO-BAIN-241,2025-Q3,Concentration,Largest Moody's Industry,12.0,9.0189,max,PASS
+238,CLO-BAIN-241,2025-Q3,Concentration,Caa/CCC Bucket,7.5,4.0813,max,PASS
+239,CLO-BAIN-241,2025-Q3,Concentration,Defaulted Obligations,2.0,1.4859,max,PASS
+240,CLO-BAIN-241,2025-Q3,Concentration,Second Lien Loans,5.0,5.1825,max,FAIL
