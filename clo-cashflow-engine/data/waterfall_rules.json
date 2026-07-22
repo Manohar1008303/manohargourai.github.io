@@ -1,0 +1,129 @@
+{
+  "BenchmarkRate": {
+    "Name": "SOFR",
+    "QuarterlyRate": 0.0130
+  },
+
+  "Fees": {
+    "SeniorExpenses": {
+      "Type": "Expense",
+      "Priority": 1,
+      "Amount": 150000
+    },
+    "TrusteeFees": {
+      "Type": "Expense",
+      "Priority": 2,
+      "Amount": 50000
+    }
+  },
+
+  "Tranches": [
+    {
+      "Name": "AAA",
+      "Type": "Debt",
+      "Priority": 3,
+      "Balance": 240000000,
+      "Spread": 0.0120,
+      "CouponFormula": "SOFR + Spread",
+      "MinOC": 1.30,
+      "MinIC": 1.15,
+      "RedirectOnFail": true
+    },
+    {
+      "Name": "AA",
+      "Type": "Debt",
+      "Priority": 4,
+      "Balance": 60000000,
+      "Spread": 0.0150,
+      "CouponFormula": "SOFR + Spread",
+      "MinOC": 1.20,
+      "MinIC": 1.10,
+      "RedirectOnFail": true
+    },
+    {
+      "Name": "A",
+      "Type": "Debt",
+      "Priority": 5,
+      "Balance": 40000000,
+      "Spread": 0.0200,
+      "CouponFormula": "SOFR + Spread",
+      "MinOC": 1.15,
+      "MinIC": 1.05,
+      "RedirectOnFail": true
+    },
+    {
+      "Name": "BBB",
+      "Type": "Debt",
+      "Priority": 6,
+      "Balance": 25000000,
+      "Spread": 0.0250,
+      "CouponFormula": "SOFR + Spread",
+      "TriggerAffected": true
+    },
+    {
+      "Name": "BB",
+      "Type": "Debt",
+      "Priority": 7,
+      "Balance": 15000000,
+      "Spread": 0.0350,
+      "CouponFormula": "SOFR + Spread",
+      "TriggerAffected": true
+    },
+    {
+      "Name": "Equity",
+      "Type": "Equity",
+      "Priority": 8,
+      "ReceivesResidual": true
+    }
+  ],
+
+  "CoverageTests": {
+    "OC": {
+      "AAA": {
+        "Threshold": 1.30,
+        "CurePriority": "AAA"
+      },
+      "AA": {
+        "Threshold": 1.20,
+        "CurePriority": "AA"
+      },
+      "A": {
+        "Threshold": 1.15,
+        "CurePriority": "A"
+      }
+    },
+    "IC": {
+      "AAA": {
+        "Threshold": 1.15
+      },
+      "AA": {
+        "Threshold": 1.10
+      },
+      "A": {
+        "Threshold": 1.05
+      }
+    }
+  },
+
+  "PaymentPriority": [
+    "Fees.SeniorExpenses",
+    "Fees.TrusteeFees",
+    "Tranches.AAA",
+    "Tranches.AA",
+    "Tranches.A",
+    "Tranches.BBB",
+    "Tranches.BB",
+    "EquityResidual"
+  ],
+
+  "TriggerLogic": {
+    "If_OC_Fails": {
+      "RedirectCashTo": "SeniorMostFailingTranche",
+      "SuspendPaymentsTo": ["BBB", "BB", "Equity"]
+    },
+    "If_IC_Fails": {
+      "RedirectCashTo": "SeniorMostFailingTranche",
+      "SuspendPaymentsTo": ["A", "BBB", "BB", "Equity"]
+    }
+  }
+}

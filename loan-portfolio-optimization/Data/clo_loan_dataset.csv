@@ -1,0 +1,51 @@
+﻿Loan_ID,Loan_Type,Industry,Rating,Spread,Default_Prob,Recovery_Rate,Utilization
+L1,Term Loan,Technology,BB,0.045,0.018,0.45,1
+L2,Term Loan,Healthcare,B,0.055,0.025,0.4,1
+L3,Term Loan,Energy,B,0.062,0.032,0.38,1
+L4,Term Loan,Retail,CCC,0.078,0.055,0.32,1
+L5,Term Loan,Technology,B,0.058,0.028,0.4,1
+L6,Term Loan,Manufacturing,BB,0.048,0.02,0.44,1
+L7,Term Loan,Healthcare,B,0.06,0.03,0.39,1
+L8,Term Loan,Energy,CCC,0.08,0.06,0.3,1
+L9,Term Loan,Media,B,0.057,0.027,0.41,1
+L10,Term Loan,Transportation,BB,0.046,0.019,0.45,1
+L11,DDTL,Technology,B,0.065,0.034,0.38,0.7
+L12,DDTL,Healthcare,B,0.067,0.036,0.37,0.7
+L13,DDTL,Energy,CCC,0.085,0.062,0.3,0.7
+L14,DDTL,Retail,B,0.07,0.038,0.35,0.7
+L15,DDTL,Manufacturing,BB,0.06,0.028,0.4,0.7
+L16,DDTL,Technology,B,0.066,0.033,0.39,0.7
+L17,DDTL,Healthcare,CCC,0.082,0.058,0.31,0.7
+L18,DDTL,Energy,B,0.069,0.035,0.36,0.7
+L19,DDTL,Media,B,0.064,0.032,0.38,0.7
+L20,DDTL,Transportation,BB,0.058,0.027,0.42,0.7
+L21,Revolver,Technology,BB,0.04,0.015,0.5,0.5
+L22,Revolver,Healthcare,B,0.048,0.022,0.45,0.5
+L23,Revolver,Energy,B,0.05,0.024,0.43,0.5
+L24,Revolver,Retail,CCC,0.06,0.04,0.35,0.5
+L25,Revolver,Manufacturing,B,0.047,0.021,0.44,0.5
+L26,Revolver,Technology,B,0.049,0.023,0.42,0.5
+L27,Revolver,Healthcare,BB,0.041,0.016,0.48,0.5
+L28,Revolver,Energy,B,0.052,0.025,0.41,0.5
+L29,Revolver,Media,CCC,0.061,0.042,0.34,0.5
+L30,Revolver,Transportation,B,0.046,0.02,0.46,0.5
+L31,Term Loan,Technology,B,0.056,0.029,0.39,1
+L32,Term Loan,Healthcare,BB,0.047,0.019,0.45,1
+L33,Term Loan,Energy,B,0.063,0.034,0.37,1
+L34,Term Loan,Retail,CCC,0.079,0.058,0.31,1
+L35,DDTL,Manufacturing,B,0.068,0.037,0.36,0.7
+L36,DDTL,Technology,BB,0.059,0.026,0.41,0.7
+L37,Revolver,Healthcare,B,0.048,0.021,0.44,0.5
+L38,Revolver,Energy,BB,0.043,0.017,0.47,0.5
+L39,Term Loan,Media,B,0.057,0.028,0.4,1
+L40,DDTL,Transportation,B,0.066,0.034,0.37,0.7
+L41,Term Loan,Telecom,B,0.058,0.028,0.39,1
+L42,Term Loan,Technology,BB,0.046,0.02,0.45,1
+L43,Term Loan,Healthcare,B,0.06,0.03,0.38,1
+L44,Term Loan,Energy,B,0.061,0.033,0.36,1
+L45,Term Loan,Retail,CCC,0.082,0.06,0.3,1
+L46,DDTL,Technology,B,0.067,0.035,0.37,0.7
+L47,DDTL,Healthcare,B,0.068,0.036,0.36,0.7
+L48,DDTL,Energy,CCC,0.086,0.063,0.29,0.7
+L49,DDTL,Media,B,0.065,0.033,0.38,0.7
+L50,DDTL,Manufacturing,BB,0.061,0.028,0.41,0.7
