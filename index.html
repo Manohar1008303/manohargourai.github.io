@@ -815,7 +815,7 @@ html{scroll-behavior:smooth;}
 @keyframes orbB{50%{transform:translate(-110px,-80px) scale(1.12);}}
 .section-line{background:linear-gradient(90deg,var(--accent),var(--accent-warm),var(--accent));background-size:200% 100%;animation:lineShimmer 5s linear infinite;}
 @keyframes lineShimmer{to{background-position:200% 0;}}
-.highlight-box h3.stat{filter:drop-shadow(0 0 10px rgba(16,185,129,.28));}
+.highlight-box h3.stat{filter:drop-shadow(0 0 10px rgba(16,185,129,.28));transition:transform .25s cubic-bezier(.34,1.56,.64,1);will-change:transform;}
 .project-card{overflow:hidden;}
 .project-card::after{content:"";position:absolute;top:0;left:-130%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(52,211,153,.14),transparent);transform:skewX(-18deg);pointer-events:none;z-index:1;}
 .project-card:hover::after{animation:cardSheen 1s ease;}
@@ -1482,28 +1482,32 @@ window.addEventListener("load", () => {
 });
 
 /* ===== COUNT-UP STATS ===== */
-function animateCount(el) {
+function animateCount(el, delay) {
   const target = parseInt(el.getAttribute("data-target"), 10);
   const suffix = el.getAttribute("data-suffix") || "";
-  const duration = 1400;
-  const start = performance.now();
-  function tick(now) {
-    const p = Math.min((now - start) / duration, 1);
-    // easeOutCubic for a natural deceleration
-    const eased = 1 - Math.pow(1 - p, 3);
-    const value = Math.round(eased * target);
-    el.textContent = value.toLocaleString() + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-    else el.textContent = target.toLocaleString() + suffix;
-  }
-  requestAnimationFrame(tick);
+  const duration = 1900;
+  setTimeout(function () {
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target).toLocaleString() + suffix;
+      if (p < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target.toLocaleString() + suffix;
+        el.style.transform = "scale(1.14)";
+        setTimeout(function () { el.style.transform = ""; }, 200);
+      }
+    }
+    requestAnimationFrame(tick);
+  }, delay);
 }
 
 const statEls = document.querySelectorAll(".stat");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (reduceMotion) {
-  // Show final values immediately
   statEls.forEach(el => {
     const t = parseInt(el.getAttribute("data-target"), 10);
     el.textContent = t.toLocaleString() + (el.getAttribute("data-suffix") || "");
@@ -1511,10 +1515,16 @@ if (reduceMotion) {
 } else {
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      const el = entry.target;
       if (entry.isIntersecting) {
-        entry.target.textContent = "0";
-        animateCount(entry.target);
-        statObserver.unobserve(entry.target);
+        if (!el.dataset.counting) {
+          el.dataset.counting = "1";
+          const idx = Array.prototype.indexOf.call(statEls, el);
+          el.textContent = "0";
+          animateCount(el, (idx % 4) * 130);
+        }
+      } else {
+        el.dataset.counting = "";
       }
     });
   }, { threshold: 0.5 });
