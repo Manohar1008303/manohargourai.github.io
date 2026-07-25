@@ -804,6 +804,29 @@ html{scroll-behavior:smooth;}
 .project-icon{background:linear-gradient(135deg,rgba(16,185,129,.35),rgba(212,175,55,.22));box-shadow:0 6px 18px rgba(16,185,129,.18);}
 .social-links-centered a:hover{background:rgba(16,185,129,.16);}
 @media (prefers-reduced-motion: reduce){.hero img{animation:heroIn .8s ease forwards;} .cta:hover::after{animation:none;}}
+
+/* ===== bolder, eye-catching motion ===== */
+.role-rotator{font-family:'Spline Sans',sans-serif;font-size:20px;margin-top:12px;color:#a7c0b4;}
+.rot-word{display:inline-block;font-weight:600;background:linear-gradient(90deg,var(--accent-light),var(--accent-warm));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:opacity .35s ease, transform .35s ease;}
+.bg-aurora::before,.bg-aurora::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+.bg-aurora::before{width:440px;height:440px;background:radial-gradient(circle,rgba(16,185,129,.45),transparent 70%);top:-90px;left:-70px;animation:orbA 20s ease-in-out infinite;}
+.bg-aurora::after{width:400px;height:400px;background:radial-gradient(circle,rgba(212,175,55,.38),transparent 70%);bottom:-110px;right:-70px;animation:orbB 24s ease-in-out infinite;}
+@keyframes orbA{50%{transform:translate(130px,90px) scale(1.15);}}
+@keyframes orbB{50%{transform:translate(-110px,-80px) scale(1.12);}}
+.section-line{background:linear-gradient(90deg,var(--accent),var(--accent-warm),var(--accent));background-size:200% 100%;animation:lineShimmer 5s linear infinite;}
+@keyframes lineShimmer{to{background-position:200% 0;}}
+.highlight-box h3.stat{filter:drop-shadow(0 0 10px rgba(16,185,129,.28));}
+.project-card{overflow:hidden;}
+.project-card::after{content:"";position:absolute;top:0;left:-130%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(52,211,153,.14),transparent);transform:skewX(-18deg);pointer-events:none;z-index:1;}
+.project-card:hover::after{animation:cardSheen 1s ease;}
+@keyframes cardSheen{to{left:135%;}}
+.project-card>*{position:relative;z-index:2;}
+@media (prefers-reduced-motion: reduce){
+ .bg-aurora::before,.bg-aurora::after{animation:none;}
+ .section-line{animation:none;}
+ .rot-word{transition:none;}
+ .project-card:hover::after{animation:none;}
+}
 </style>
 </head>
 
@@ -843,6 +866,7 @@ html{scroll-behavior:smooth;}
 
     <div class="hero-text">
       <h1 class="hero-anim d2">Manohar Gourai</h1>
+      <div class="role-rotator hero-anim d3" aria-hidden="true">Focused on <span class="rot-word" id="rotWord">Portfolio Operations</span></div>
 
       <p class="hero-anim d3" style="margin-top:18px; line-height:1.7; color:#cfd6e6;">
         I am a finance and analytics professional with over four years of experience supporting
@@ -1562,5 +1586,34 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
 
 </script>
 
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var el = document.getElementById("rotWord");
+  if (el && !reduce){
+    var words = ["Portfolio Operations","CLO & Structured Finance","Business Analytics","Data & Dashboards"];
+    var i = 0;
+    setInterval(function(){
+      el.style.opacity = "0"; el.style.transform = "translateY(8px)";
+      setTimeout(function(){
+        i = (i+1) % words.length;
+        el.textContent = words[i];
+        el.style.opacity = "1"; el.style.transform = "translateY(0)";
+      }, 350);
+    }, 2600);
+  }
+  if (!reduce && window.matchMedia("(hover: hover)").matches){
+    document.querySelectorAll(".cta").forEach(function(b){
+      b.addEventListener("mousemove", function(e){
+        var r = b.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2;
+        var y = e.clientY - r.top - r.height/2;
+        b.style.transform = "translate(" + (x*0.15).toFixed(1) + "px," + (y*0.15 - 3).toFixed(1) + "px)";
+      });
+      b.addEventListener("mouseleave", function(){ b.style.transform = ""; });
+    });
+  }
+})();
+</script>
 </body>
 </html>
