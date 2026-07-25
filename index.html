@@ -929,89 +929,87 @@ footer {
     client service, and operational leadership within a highly regulated financial environment.
   </p>
 
-  <!-- ===== BNY – Representative ===== -->
-  <div class="card reveal">
-    <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
-      <img src="bny-logo.png" alt="BNY Mellon"
-           style="width:42px; height:42px; border-radius:50%; background:#fff; padding:6px;">
-      <div>
-        <h3 style="margin:0;">Bank of New York Mellon</h3>
-        <p style="margin:4px 0 0; color:#8fa8ff; font-size:14px;">
-          Representative – Client Processing
-        </p>
+  <style>
+  .timeline{position:relative;max-width:800px;margin:0 auto;padding-left:80px;}
+  .timeline-rail{position:absolute;left:33px;top:6px;bottom:6px;width:4px;border-radius:2px;background:rgba(127,176,255,.14);overflow:hidden;}
+  .timeline-fill{position:absolute;left:0;top:0;width:100%;height:0;border-radius:2px;background:linear-gradient(180deg,#5a8cff,#5fd0c4,#9b8cff);box-shadow:0 0 16px rgba(95,208,196,.55);transition:height .18s linear;}
+  .tl-item{position:relative;margin-bottom:44px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-node{position:absolute;left:-65px;top:2px;width:52px;height:52px;border-radius:50%;background:#0e1422;border:2px solid rgba(127,176,255,.28);display:flex;align-items:center;justify-content:center;z-index:2;transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease;}
+  .tl-node img{width:30px;height:30px;border-radius:50%;background:#fff;padding:4px;}
+  .tl-item.active .tl-node{border-color:#5fd0c4;transform:scale(1.08);box-shadow:0 0 0 6px rgba(95,208,196,.12),0 0 22px rgba(95,208,196,.5);}
+  .tl-card{position:relative;background:linear-gradient(145deg,#161d31,#0e1422);border-radius:16px;padding:24px 26px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .35s ease,transform .35s ease;}
+  .tl-card::before{content:"";position:absolute;left:-31px;top:26px;width:31px;height:2px;background:linear-gradient(90deg,transparent,rgba(127,176,255,.45));}
+  .tl-item.active .tl-card{box-shadow:inset 0 0 0 1px rgba(127,176,255,.35),0 16px 40px rgba(0,0,0,.4);}
+  .tl-date{display:inline-block;font-size:13px;color:#5fd0c4;background:rgba(95,208,196,.1);padding:5px 13px;border-radius:14px;margin-bottom:12px;}
+  .tl-card h3{margin:0 0 4px;font-size:20px;}
+  .tl-org{margin:0 0 14px;color:#8fa8ff;font-size:14px;}
+  .tl-card ul{margin:0;padding-left:18px;line-height:1.6;color:#cfd6e6;font-size:15px;}
+  .tl-card li{margin-bottom:6px;}
+  @media(max-width:600px){.timeline{padding-left:58px;}.timeline-rail{left:21px;}.tl-node{left:-53px;width:44px;height:44px;}.tl-node img{width:26px;height:26px;}}
+  </style>
+
+  <div class="timeline" id="timeline">
+    <div class="timeline-rail"><span class="timeline-fill" id="timelineFill"></span></div>
+
+    <!-- Representative -->
+    <div class="tl-item reveal">
+      <div class="tl-node"><img src="bny-logo.png" alt="BNY Mellon"></div>
+      <div class="tl-card">
+        <span class="tl-date">Jun 2021 – Jul 2022</span>
+        <h3>Representative – Client Processing</h3>
+        <p class="tl-org">Bank of New York Mellon</p>
+        <ul>
+          <li>Delivered daily cash flow statements for institutional portfolios under strict SLAs, maintaining zero missed client deadlines.</li>
+          <li>Prepared daily cash reconciliations for CLO and structured-product portfolios and sent them to institutional clients on time.</li>
+          <li>Resolved cash-pending breaks through transaction review and cross-team coordination, keeping exceptions current.</li>
+          <li>Sourced cash movement details from agent banks and corrected missing or inaccurate entries to ensure data integrity.</li>
+          <li>Coordinated with agent banks and third-party administrators, following service issues through to resolution.</li>
+          <li>Maintained audit-ready records, logs, and compliance documentation in a highly regulated environment.</li>
+        </ul>
       </div>
     </div>
 
-    <p style="color:#9aa2b1; font-size:14px; margin-bottom:16px;">
-      Jun 2021 – Jul 2022
-    </p>
-
-    <ul style="line-height:1.6;">
-      <li>Delivered daily cash flow statements for institutional portfolios under strict SLAs, maintaining zero missed client deadlines.</li>
-      <li>Prepared daily cash reconciliations for CLO and structured-product portfolios and sent them to institutional clients on time.</li>
-      <li>Resolved cash-pending breaks through transaction review and cross-team coordination, keeping exceptions current.</li>
-      <li>Sourced cash movement details from agent banks and corrected missing or inaccurate entries to ensure data integrity.</li>
-      <li>Coordinated with agent banks and third-party administrators, following service issues through to resolution.</li>
-      <li>Maintained audit-ready records, logs, and compliance documentation in a highly regulated environment.</li>
-    </ul>
-  </div>
-
-  <!-- ===== BNY – Intermediate Representative ===== -->
-  <div class="card reveal">
-    <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
-      <img src="bny-logo.png" alt="BNY Mellon"
-           style="width:42px; height:42px; border-radius:50%; background:#fff; padding:6px;">
-      <div>
-        <h3 style="margin:0;">Bank of New York Mellon</h3>
-        <p style="margin:4px 0 0; color:#8fa8ff; font-size:14px;">
-          Intermediate Representative – Client Processing
-        </p>
+    <!-- Intermediate Representative -->
+    <div class="tl-item reveal">
+      <div class="tl-node"><img src="bny-logo.png" alt="BNY Mellon"></div>
+      <div class="tl-card">
+        <span class="tl-date">Jul 2022 – Mar 2024</span>
+        <h3>Intermediate Representative – Client Processing</h3>
+        <p class="tl-org">Bank of New York Mellon</p>
+        <ul>
+          <li>Investigated and resolved 5,000+ complex cash and PAR breaks over four years using system data and transaction analysis.</li>
+          <li>Handled end-to-end processing of CLO portfolio transactions, including loan settlements, reinvestments, and coverage test monitoring.</li>
+          <li>Completed full trade settlement, asset setup, and maintenance, confirming each transaction was entered and settled correctly.</li>
+          <li>Partnered with Asset Administration, Operations, and Portfolio Management teams to clear high-impact exceptions and compliance queries.</li>
+          <li>Identified recurring processing issues and drove fixes that reduced repeat breaks and strengthened reconciliation controls.</li>
+        </ul>
       </div>
     </div>
 
-    <p style="color:#9aa2b1; font-size:14px; margin-bottom:16px;">
-      Jul 2022 – Mar 2024
-    </p>
-
-    <ul style="line-height:1.6;">
-      <li>Investigated and resolved 5,000+ complex cash and PAR breaks over four years using system data and transaction analysis.</li>
-      <li>Handled end-to-end processing of CLO portfolio transactions, including loan settlements, reinvestments, and coverage test monitoring.</li>
-      <li>Completed full trade settlement, asset setup, and maintenance, confirming each transaction was entered and settled correctly.</li>
-      <li>Partnered with Asset Administration, Operations, and Portfolio Management teams to clear high-impact exceptions and compliance queries.</li>
-      <li>Identified recurring processing issues and drove fixes that reduced repeat breaks and strengthened reconciliation controls.</li>
-    </ul>
-  </div>
-
-  <!-- ===== BNY – Associate ===== -->
-  <div class="card reveal">
-    <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
-      <img src="bny-logo.png" alt="BNY Mellon"
-           style="width:42px; height:42px; border-radius:50%; background:#fff; padding:6px;">
-      <div>
-        <h3 style="margin:0;">Bank of New York Mellon</h3>
-        <p style="margin:4px 0 0; color:#8fa8ff; font-size:14px;">
-          Associate – Client Processing
-        </p>
+    <!-- Associate -->
+    <div class="tl-item reveal">
+      <div class="tl-node"><img src="bny-logo.png" alt="BNY Mellon"></div>
+      <div class="tl-card">
+        <span class="tl-date">Mar 2024 – Aug 2025</span>
+        <h3>Associate – Client Processing</h3>
+        <p class="tl-org">Bank of New York Mellon</p>
+        <ul>
+          <li>Led the team during the manager's absence, owning priorities, escalations, and client discussions.</li>
+          <li>Served as primary point of contact for institutional clients including Bain Capital, ARES, and TCW, representing the team in client meetings.</li>
+          <li>Owned daily cash and position reconciliation and start-of-day/end-of-day operational controls, ensuring no aged break was left outstanding.</li>
+          <li>Carried out monthly trustee reconciliation and indenture compliance monitoring, keeping portfolio activity aligned with fund governing documents.</li>
+          <li>Prepared daily and monthly client and investor reports (cut-date, trade, exception, research) and sent each within the required timeframe.</li>
+          <li>Designed daily and monthly dashboards in Excel and Power BI that gave management and clients real-time visibility into portfolio operations.</li>
+          <li>Worked with technology teams to automate cash flow and fax processing, improving turnaround time and proactive oversight.</li>
+          <li>Reviewed team members' work, resolved escalated issues, and trained new joiners while supporting work delegation and development plans.</li>
+        </ul>
       </div>
     </div>
 
-    <p style="color:#9aa2b1; font-size:14px; margin-bottom:16px;">
-      Mar 2024 – Aug 2025
-    </p>
-
-    <ul style="line-height:1.6;">
-      <li>Led the team during the manager's absence, owning priorities, escalations, and client discussions.</li>
-      <li>Served as primary point of contact for institutional clients including Bain Capital, ARES, and TCW, representing the team in client meetings.</li>
-      <li>Owned daily cash and position reconciliation and start-of-day/end-of-day operational controls, ensuring no aged break was left outstanding.</li>
-      <li>Carried out monthly trustee reconciliation and indenture compliance monitoring, keeping portfolio activity aligned with fund governing documents.</li>
-      <li>Prepared daily and monthly client and investor reports (cut-date, trade, exception, research) and sent each within the required timeframe.</li>
-      <li>Designed daily and monthly dashboards in Excel and Power BI that gave management and clients real-time visibility into portfolio operations.</li>
-      <li>Worked with technology teams to automate cash flow and fax processing, improving turnaround time and proactive oversight.</li>
-      <li>Reviewed team members' work, resolved escalated issues, and trained new joiners while supporting work delegation and development plans.</li>
-    </ul>
   </div>
 
-</section>
+  </section>
 
 
 <!-- ===== PROJECTS ===== -->
@@ -1504,6 +1502,32 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     });
   });
 }
+
+/* ===== JOURNEY TIMELINE: scroll-drawn trail + node activation ===== */
+(function(){
+  const tl = document.getElementById("timeline");
+  if (!tl) return;
+  const fill = document.getElementById("timelineFill");
+  const rail = tl.querySelector(".timeline-rail");
+  const items = Array.prototype.slice.call(tl.querySelectorAll(".tl-item"));
+  function update(){
+    const r = rail.getBoundingClientRect();
+    const line = window.innerHeight * 0.55;      // trail follows this screen line
+    let h = Math.max(0, Math.min(line - r.top, r.height));
+    fill.style.height = h + "px";
+    const fillBottom = r.top + h;
+    items.forEach(function(it){
+      const nb = it.querySelector(".tl-node").getBoundingClientRect();
+      if (nb.top + nb.height/2 <= fillBottom + 2) it.classList.add("active");
+      else it.classList.remove("active");
+    });
+  }
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  window.addEventListener("load", update);
+  update();
+})();
+
 </script>
 
 </body>
